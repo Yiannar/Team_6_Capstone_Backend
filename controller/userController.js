@@ -11,11 +11,11 @@ const {
 // Index route
 users.get('/', async (req, res) => {
   const allUsers = await getAllUsers();
-  // if (allUsers[0]) {
+  if (allUsers[0]) {
   res.status(200).json(allUsers);
-  // } else {
-  //   res.status(500).json({ error: 'Error! Unable to get all users' });
-  // }
+  } else {
+    res.status(500).json({ error: 'Error! Unable to get all users' });
+  }
 });
 
 // Show Route
