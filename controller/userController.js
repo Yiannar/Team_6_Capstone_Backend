@@ -12,7 +12,7 @@ const {
 users.get('/', async (req, res) => {
   const allUsers = await getAllUsers();
   if (allUsers[0]) {
-    res.status(200).json(allUsers);
+  res.status(200).json(allUsers);
   } else {
     res.status(500).json({ error: 'Error! Unable to get all users' });
   }
@@ -31,7 +31,7 @@ users.get('/:id', async (req, res) => {
   }
 });
 //CREATE
-users.post('/', checkName, checkBoolean, async (req, res) => {
+users.post('/', async (req, res) => {
   let copy = { ...req.body };
   //   const capitalized = copy.name
   //     .toLowerCase()
@@ -63,7 +63,7 @@ users.delete('/:id', async (req, res) => {
 
 // Update
 
-users.put('/:id', checkTitle, checkBoolean, checkImage, async (req, res) => {
+users.put('/:id', async (req, res) => {
   try {
     const { id } = req.params;
     const updatedUser = await updateUser(id, req.body);
