@@ -17,4 +17,3 @@ CREATE TABLE profile (
   gender TEXT,
   verified BOOLEAN DEFAULT false
 );
-
