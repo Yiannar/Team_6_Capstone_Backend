@@ -1,6 +1,7 @@
 const db = require('../db/dbConfig');
 
 const getAllUsers = async () => {
+  console.log(db);
   try {
     const allUsers = await db.any('SELECT * FROM profile');
     return allUsers;
