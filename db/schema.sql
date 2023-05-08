@@ -1,12 +1,12 @@
 DROP DATABASE IF EXISTS user_profile;
-CREATE DATABASE user_profile;
+CREATE DATABASE user_profile; 
 
-\c user_profile;
+\c user_profile; 
 
 DROP TABLE IF EXISTS profile;
 
 CREATE TABLE profile (
-  user_id INT PRIMARY KEY,
+  id SERIAL PRIMARY KEY,
   first_name TEXT,
   last_name TEXT,
   email TEXT UNIQUE,
@@ -15,5 +15,5 @@ CREATE TABLE profile (
   location TEXT,
   pace TEXT,
   gender TEXT,
-  verified BOOLEAN DEFAULT false,
+  verified BOOLEAN DEFAULT false
 );
