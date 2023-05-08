@@ -1,11 +1,19 @@
-DROP DATABASE IF EXISTS template_test_dev;
-CREATE DATABASE template_test_dev;
+DROP DATABASE IF EXISTS user_profile;
+CREATE DATABASE user_profile;
 
-\c template_test_dev;
+\c user_profile;
 
-DROP TABLE IF EXISTS test;
+DROP TABLE IF EXISTS profile;
 
-CREATE TABLE test (
-    id SERIAL PRIMARY KEY, 
-    name TEXT
+CREATE TABLE profile (
+  user_id INT PRIMARY KEY,
+  first_name TEXT,
+  last_name TEXT,
+  email TEXT UNIQUE,
+  password TEXT,
+  age INT,
+  location TEXT,
+  pace TEXT,
+  gender TEXT,
+  verified BOOLEAN DEFAULT false,
 );
