@@ -31,10 +31,11 @@ const createUser = async (profile) => {
     pace,
     gender,
     verified,
+    image,
   } = profile;
   try {
     const newUser = await db.one(
-      'INSERT INTO profile (user_id,first_name,last_name,email,password,age,location,pace,gender,verified) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING *',
+      'INSERT INTO profile (user_id,first_name,last_name,email,password,age,location,pace,gender,verified,image) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING *',
       [
         user_id,
         first_name,
@@ -46,6 +47,7 @@ const createUser = async (profile) => {
         pace,
         gender,
         verified,
+        image,
       ]
     );
     return newUser;
@@ -78,10 +80,11 @@ const updateUser = async (id, profile) => {
     pace,
     gender,
     verified,
+    image,
   } = profile;
   try {
     const updatedUser = await db.one(
-      'UPDATE profile SET first_name=$1,last_name=$2,email=$3,password=$4,age=$5,location=$6,pace=$7,gender=$8,verified=$9 WHERE user_id=$10 RETURNING *',
+      'UPDATE profile SET first_name=$1,last_name=$2,email=$3,password=$4,age=$5,location=$6,pace=$7,gender=$8,verified=$9,image=$10 WHERE id=$11 RETURNING *',
       [
         first_name,
         last_name,
@@ -92,7 +95,8 @@ const updateUser = async (id, profile) => {
         pace,
         gender,
         verified,
-        user_id,
+        id,
+        image,
       ]
     );
     return updatedUser;
