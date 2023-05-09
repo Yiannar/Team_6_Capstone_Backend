@@ -15,7 +15,9 @@ CREATE TABLE profile (
   location TEXT,
   pace TEXT,
   gender TEXT,
-  verified BOOLEAN DEFAULT false
+  verified BOOLEAN DEFAULT false,
+  image TEXT DEFAULT 'no image found'
+  I
 );
 
 DROP TABLE IF EXISTS ratings;
