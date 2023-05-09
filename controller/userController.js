@@ -12,9 +12,9 @@ const {
 users.get('/', async (req, res) => {
   const allUsers = await getAllUsers();
   if (allUsers[0]) {
-  res.status(200).json(allUsers);
+    res.status(200).json(allUsers);
   } else {
-    res.status(500).json({ error: 'Error! Unable to get all users' });
+    res.status(500).json({ error: 'Unable to get all users' });
   }
 });
 
@@ -54,8 +54,8 @@ users.post('/', async (req, res) => {
 users.delete('/:id', async (req, res) => {
   try {
     const { id } = req.params;
-    const deletedGame = await deleteUser(id);
-    res.status(200).json(deletedGame);
+    const deletedUser = await deleteUser(id);
+    res.status(200).json(deletedUser);
   } catch (error) {
     res.status(500).json({ error: 'invalid request' });
   }
