@@ -81,7 +81,7 @@ const updateUser = async (id, profile) => {
   } = profile;
   try {
     const updatedUser = await db.one(
-      'UPDATE profile SET first_name=$1,last_name=$2,email=$3,password=$4,age=$5,location=$6,pace=$7,gender=$8,verified=$9 WHERE user_id=$10 RETURNING *',
+      'UPDATE profile SET first_name=$1,last_name=$2,email=$3,password=$4,age=$5,location=$6,pace=$7,gender=$8,verified=$9 WHERE id=$10 RETURNING *',
       [
         first_name,
         last_name,
@@ -92,7 +92,7 @@ const updateUser = async (id, profile) => {
         pace,
         gender,
         verified,
-        user_id,
+        id,
       ]
     );
     return updatedUser;
