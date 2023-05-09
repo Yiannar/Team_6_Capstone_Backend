@@ -15,5 +15,18 @@ CREATE TABLE profile (
   location TEXT,
   pace TEXT,
   gender TEXT,
-  verified BOOLEAN DEFAULT false
+  verified BOOLEAN DEFAULT false,
+  image TEXT DEFAULT 'no image found'
+  I
+);
+
+DROP TABLE IF EXISTS ratings;
+
+CREATE TABLE ratings(
+  rating_id SERIAL PRIMARY KEY,
+  route_name VARCHAR(255) NOT NULL,
+  profile_id INT NOT NULL,
+  rating_value INT NOT NULL,
+  location VARCHAR(50) NOT NULL,
+  FOREIGN KEY (profile_id) REFERENCES profile (id)
 );
