@@ -1,41 +1,58 @@
-// DEPENDENCIES
-const app = require("./app.js");
-
-// CONFIGURATION
+const express = require('express');
+const app = express();
 require("dotenv").config();
 const PORT = process.env.PORT;
 
-const  {socket}  = require("socket.io");
-const {instrument} = require ('@socket.io/admin-ui')
+const http = require('http').Server(app)
+const cors = require('cors')
 
+app.use(cors())
 
+let users = [];
 
-const io = require('socket.io')(3004, {
+const socketIO = require('socket.io')(http, {
     cors:{
-        origin: ['https://kyrun.netlify.app/', 'https://admin.socket.io/']
+        origin: ['https://kyrun.netlify.app/']
     }
 })
 
-io.on('connection', socket =>{
-    console.log(socket.id)
-    socket.on('send-message', (message, room) => {
-        if(room === ''){ 
-            socket.broadcast.emit('recieve-message', message)
-        } else {
-            socket.to(room).emit('recieve-message', message)
-        }
-    })
-    socket.on('join-room', (room, cb) =>{
-        socket.join(room)
-        cb(`Joined ${room}`)
-    })
-})
 
-instrument(io, {auth: false})
 
-// LISTEN
-io.listen(PORT, () => {
-    console.log(`Listening on port ${PORT}`);
+socketIO.on('connection', (socket) => {
+   
+    socket.on('message', (data) => {
+        socketIO.emit('messageResponse', data);
+    });
+  
+    console.log(`⚡: ${socket.id} user just connected!`);
+
+  //Listens when a new user joins the server
+  //Adds the new user to the list of users
+  //Sends the list of users to the client
+  
+  socket.on('newUser', (data) => {
+    users.push(data);
+    socketIO.emit('newUserResponse', users);
+});
+console.log(users);
+
+  socket.on('disconnect', () => {
+    console.log('🔥: A user disconnected');
+    //Updates the list of users when a user disconnects from the server
+    users = users.filter((user) => user.socketID !== socket.id);
+    //Sends the list of users to the client
+    socketIO.emit('newUserResponse', users);
+    socket.disconnect();
+});
+});
+console.log(users);
+
+app.get('/api', (req, res) => {
+  res.json({
+    message: 'Hello world',
   });
-  
-  
+});
+
+http.listen(PORT, () => {
+  console.log(`Server listening on ${PORT}`);
+});
