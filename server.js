@@ -3,6 +3,7 @@ const app = express();
 require("dotenv").config();
 const PORT = process.env.PORT;
 
+
 const http = require('http').Server(app)
 const cors = require('cors')
 
@@ -10,9 +11,11 @@ app.use(cors())
 
 let users = [];
 
+
 const socketIO = require('socket.io')(http, {
     cors:{
         origin: ['https://kyrun.netlify.app/']
+        
     }
 })
 
@@ -47,7 +50,7 @@ console.log(users);
 });
 console.log(users);
 
-app.get('/api', (req, res) => {
+app.get('/', (req, res) => {
   res.json({
     message: 'Hello world',
   });
