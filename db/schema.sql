@@ -9,7 +9,8 @@ CREATE DATABASE user_profile;
 DROP TABLE IF EXISTS login;
 
 CREATE TABLE login(
-    email TEXT UNIQUE
+    email TEXT UNIQUE NOT NULL,
+    password TEXT UNIQUE NOT NULL
 )
 
 DROP TABLE IF EXISTS profile;
@@ -18,15 +19,13 @@ CREATE TABLE profile (
   id SERIAL PRIMARY KEY,
   first_name TEXT,
   last_name TEXT,
-  email TEXT UNIQUE,
-  password TEXT,
+  email TEXT UNIQUE NOT NULL,
+  password TEXT UNIQUE NOT NULL,
   age INT,
-  location TEXT,
-  pace TEXT,
+  zipCode INT,
+  pace INT,
   gender TEXT,
-  verified BOOLEAN DEFAULT false,
-  image TEXT DEFAULT 'no image found'
-  
+  verified BOOLEAN DEFAULT false
 );
 
 DROP TABLE IF EXISTS ratings;
