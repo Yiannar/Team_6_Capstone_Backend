@@ -41,3 +41,4 @@ app.listen(3000, () => {
 });
 
 //should listen on 3003 
+//check the port 
