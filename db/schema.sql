@@ -12,7 +12,7 @@ CREATE TABLE profile (
   email TEXT UNIQUE,
   password TEXT,
   age INT,
-  location TEXT,
+  zipCode TEXT,
   pace TEXT,
   gender TEXT,
   verified BOOLEAN DEFAULT false,
@@ -30,3 +30,11 @@ CREATE TABLE ratings(
   location VARCHAR(50) NOT NULL,
   FOREIGN KEY (profile_id) REFERENCES profile (id)
 );
+
+DROP TABLE IF EXISTS bulletin (
+  bulletin_id INT PRIMARY KEY,
+  title VARCHAR(255) NOT NULL,
+  message TEXT NOT NULL,
+  author TEXT NOT NULL,
+  FOREIGN KEY(author) REFERENCES profile (id)
+)
