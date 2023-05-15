@@ -10,6 +10,7 @@ const morgan = require('morgan');
 // CONFIGURATION
 const app = express();
 const port = 3333; 
+// post should change to 3003 
 
 // MIDDLEWARE
 app.use(express.json());
