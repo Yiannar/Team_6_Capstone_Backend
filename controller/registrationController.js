@@ -39,3 +39,5 @@ app.post('/api/register', async (req, res) => {
 app.listen(3000, () => {
   console.log('Server listening on port 3000');
 });
+
+//should listen on 3003 

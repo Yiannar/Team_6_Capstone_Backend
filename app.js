@@ -10,7 +10,7 @@ const morgan = require('morgan');
 // CONFIGURATION
 const app = express();
 const port = 3333; 
-// post should change to 3003 
+// post should change to 3003 ...
 
 // MIDDLEWARE
 app.use(express.json());
@@ -53,7 +53,7 @@ app.use((req, res, next) => {
     return res.status(403).json({ error: 'HTTPS required' });
   }
 
-  // Implement rate limiting
+  // Implement rate limiting in for users
   // ...
 
   next();
