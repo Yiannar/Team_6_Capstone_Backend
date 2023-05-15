@@ -8,6 +8,7 @@ const loginSchema = Joi.object({
   password: Joi.string().required(),
 });
 
+//the auth token controller 
 // Login controller
 exports.login = async (req, res) => {
   try {
