@@ -21,7 +21,7 @@ const getUser = async (id) => {
 
 const createUser = async (profile) => {
   let {
-    user_id,
+    id,
     first_name,
     last_name,
     email,
@@ -35,9 +35,9 @@ const createUser = async (profile) => {
   } = profile;
   try {
     const newUser = await db.one(
-      'INSERT INTO profile (user_id,first_name,last_name,email,password,age,zipCode,pace,gender,verified,image) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING *',
+      'INSERT INTO profile (id,first_name,last_name,email,password,age,zipCode,pace,gender,verified,image) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING *',
       [
-        user_id,
+        id,
         first_name,
         last_name,
         email,
@@ -70,7 +70,6 @@ const deleteUser = async (id) => {
 
 const updateUser = async (id, profile) => {
   let {
-    user_id,
     first_name,
     last_name,
     email,
@@ -95,8 +94,8 @@ const updateUser = async (id, profile) => {
         pace,
         gender,
         verified,
-        id,
         image,
+        id,
       ]
     );
     return updatedUser;

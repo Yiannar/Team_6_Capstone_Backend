@@ -28,13 +28,13 @@ CREATE TABLE profile (
   verified BOOLEAN DEFAULT false
 );
 
-DROP TABLE IF EXISTS ratings;
-
-CREATE TABLE ratings(
-  rating_id SERIAL PRIMARY KEY,
-  route_name VARCHAR(255) NOT NULL,
-  profile_id INT NOT NULL,
-  rating_value INT NOT NULL,
-  location VARCHAR(50) NOT NULL,
-  FOREIGN KEY (profile_id) REFERENCES profile (id)
-);
+DROP TABLE IF EXISTS bulletin (
+  bulletin_id INT PRIMARY KEY,
+  title VARCHAR(255) NOT NULL,
+  message TEXT NOT NULL,
+  author TEXT NOT NULL,
+  date TEXT NOT NULL
+  FOREIGN KEY(author) REFERENCES profile (id)
+  -- group TEXT NOT NULL,
+  FOREIGN KEY(group) REFERENCES group(group_id)
+)
