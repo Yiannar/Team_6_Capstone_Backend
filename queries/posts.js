@@ -1,4 +1,4 @@
-const db = require('../db/dbConfig')
+const db = require('../db/dbconfig')
 
 const getAllPosts = async ()=>{
     try{
@@ -18,12 +18,12 @@ const getPost = async (id) => {
     }
 };
 
-const createPost = async (post) =>{
-    let {post,date} = post
+const createPost = async (singlePost) =>{
+    let {post, date, author_id, groups_id} = singlePost
     try{
         const newPost = await db.one(
-            'INSERT INTO posts(post,date) VALUES ($1, $2) RETURNING *',
-            [post, date ]
+            'INSERT INTO posts(post,date, author_id, groups_id) VALUES ($1, $2, $3, $4) RETURNING *',
+            [post, date, author_id, groups_id  ]
         ) 
         return newPost
     } catch(error){
@@ -44,13 +44,12 @@ const deletePost = async (id) =>{
 };
 
 const updatePost = async (id, post) =>{
-    let {post, date}= post;
     try {
         const updatedPost = await db.many(
-            'UPDATE post SET post=$1, date=$2 WHERE id=$3 RETURNING *'
-            [post, date]
+            'UPDATE post SET post=$1 WHERE id=$2 RETURNING *',
+            [post, id]
         )
-        return updatePost
+        return updatedPost
     } catch (error) {
         return error
     }
