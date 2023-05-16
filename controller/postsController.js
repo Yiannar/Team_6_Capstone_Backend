@@ -39,7 +39,7 @@ posts.post('/', async (req, res) => {
 posts.delete('/:id', async (req, res) => {
   try {
     const { id } = req.params;
-    const deletedPost = await deletedPost(id);
+    const deletedPost = await deletePost(id);
     res.status(200).json(deletedPost);
   } catch (error) {
     res.status(500).json({ error: 'invalid request to remove a post' });
