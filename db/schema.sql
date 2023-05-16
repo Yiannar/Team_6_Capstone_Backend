@@ -54,3 +54,17 @@ CREATE TABLE replies(
     post_id INTEGER REFERENCES posts(id),
     author_id INTEGER REFERENCES profile(id)
 );
+
+-- 
+-- DROP TABLE IF EXISTS bulletin;
+
+-- CREATE TABLE bulletin (
+--   id SERIAL PRIMARY KEY,
+--   title VARCHAR(255) NOT NULL,
+--   message TEXT NOT NULL,
+--   author TEXT NOT NULL,
+--   date TEXT NOT NULL
+--   author_id TEXT REFERENCES profile (id)
+--   groups TEXT NOT NULL,
+--   groups_id INTEGER REFERENCES groups(id)
+-- )

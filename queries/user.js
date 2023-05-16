@@ -1,4 +1,4 @@
-const db = require('../db/dbconfig')
+const db = require('../db/dbConfig');
 const getAllUsers = async () => {
   console.log(db);
   try {
@@ -31,7 +31,7 @@ const createUser = async (profile) => {
     gender,
     verified,
     img,
-    groups_id
+    groups_id,
   } = profile;
   try {
     const newUser = await db.one(
@@ -48,7 +48,7 @@ const createUser = async (profile) => {
         gender,
         verified,
         img,
-        groups_id
+        groups_id,
       ]
     );
     return newUser;
@@ -69,7 +69,7 @@ const deleteUser = async (id) => {
   }
 };
 
-const updateUser = async  (id, profile) => {
+const updateUser = async (id, profile) => {
   let {
     first_name,
     last_name,
@@ -81,7 +81,7 @@ const updateUser = async  (id, profile) => {
     gender,
     verified,
     img,
-    groups_id
+    groups_id,
   } = profile;
   try {
     const updatedUser = await db.one(
@@ -98,7 +98,7 @@ const updateUser = async  (id, profile) => {
         verified,
         img,
         groups_id,
-        id
+        id,
       ]
     );
     return updatedUser;
