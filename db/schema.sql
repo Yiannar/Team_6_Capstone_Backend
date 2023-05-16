@@ -24,27 +24,13 @@ CREATE TABLE profile (
   verified BOOLEAN DEFAULT false
 );
 
-CREATE TABLE groups (
-  id SERIAL PRIMARY KEY,
-  name VARCHAR(255) NOT NULL,
-  description TEXT,
-  admin_id INTEGER REFERENCES users(id) NOT NULL,
-  created_at TIMESTAMP DEFAULT NOW(),
-  updated_at TIMESTAMP DEFAULT NOW()
-);
+DROP TABLE IF EXISTS ratings;
 
-CREATE TABLE login (
-  id SERIAL PRIMARY KEY,
-  email TEXT UNIQUE NOT NULL,
-  password TEXT NOT NULL
+CREATE TABLE ratings(
+  rating_id SERIAL PRIMARY KEY,
+  route_name VARCHAR(255) NOT NULL,
+  profile_id INT NOT NULL,
+  rating_value INT NOT NULL,
+  location VARCHAR(50) NOT NULL,
+  FOREIGN KEY (profile_id) REFERENCES profile (id)
 );
-
-CREATE TABLE registration (
-  id SERIAL PRIMARY KEY,
-  email TEXT UNIQUE NOT NULL,
-  password TEXT NOT NULL,
-  first_name TEXT NOT NULL,
-  last_name TEXT NOT NULL,
-  created_at TIMESTAMP DEFAULT NOW()
-);
-

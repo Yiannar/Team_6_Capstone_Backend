@@ -17,6 +17,7 @@ app.use(express.json());
 app.use(cors());
 app.use(express.json());
 app.use(morgan('tiny'));
+app.use(express.urlencoded({ extended: true }));
 
 // Error handler middleware
 app.use((err, req, res, next) => {
@@ -61,6 +62,7 @@ app.use((req, res, next) => {
 
 // USER ROUTES
 app.use('/users', userController);
+
 console.log(`${req.method} ${req.url}`);
 // LOGIN ROUTE
 app.use('/login', loginController);
@@ -72,6 +74,9 @@ console.log(`${req.method} ${req.url}`);
 app.post('/login', loginController.login);
 app.post('/register', registrationController.register);
 
+app.use('/groups/bulletin', bulletinController);
+>>>>>>> cbcba01c002b3b44946e0a7901733c89f3100950
+
 // ROUTES
 app.get('/', (req, res) => {
   res.send('Welcome to Kyrun App');
@@ -81,6 +86,10 @@ app.get('/', (req, res) => {
 // 404 PAGE
 app.get('*', (req, res) => {
   res.status(404).send('Page not found');
+});
+
+app.get("*", (req, res) => {
+  res.redirect("/not-found");
 });
 
 // EXPORT
