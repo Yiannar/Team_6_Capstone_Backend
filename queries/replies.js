@@ -18,17 +18,17 @@ const getReply = async (id) => {
   }
 };
 
-const createReplies = async (replies) => {
-  let { replies, date } = replies;
-  try {
-    const newReplies = await db.one(
-      'INSERT INTO replies(replies,date) VALUES ($1, $2) RETURNING *',
-      [replies, date]
-    );
-    return newReplies;
-  } catch (error) {
-    return error;
-  }
+const createReplies = async (replies) =>{
+    let {reply,date, post_id, author_id} = replies
+    try{
+        const newReplies = await db.one(
+            'INSERT INTO replies(reply,date, post_id, author_id) VALUES ($1, $2, $3, $4) RETURNING *',
+            [reply,date, post_id, author_id]
+        ) 
+        return newReplies
+    } catch(error){
+        return error
+    }
 };
 
 const deleteReply = async (id) => {
@@ -43,18 +43,23 @@ const deleteReply = async (id) => {
   }
 };
 
-const updateReplies = async (id, replies) => {
-  let { replies, date } = post;
-  try {
-    const updatedReply = await db.many(
-      'UPDATE replies SET replies=$1, date=$2 WHERE id=$3 RETURNING *'[
-        (replies, date)
-      ]
-    );
-    return updatedReplies;
-  } catch (error) {
-    return error;
-  }
+const updateReplies = async (id, replies) =>{
+    // let {reply, date, post_id, author_id}= replies;
+    try {
+        const updatedReply = await db.one(
+            'UPDATE replies SET reply=$1, date=$2, post_id=$3, author_id=$4 WHERE id=$5 RETURNING *'
+            [
+            replies.reply, 
+            replies.date,
+            replies.post_id, 
+            replies.author_id,
+            id
+            ]
+        )
+        return updatedReply
+    } catch (error) {
+        return error
+    }
 };
 
 module.exports = {

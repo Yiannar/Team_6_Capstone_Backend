@@ -29,7 +29,7 @@ CREATE TABLE profile (
   pace INT,
   gender TEXT,
   verified BOOLEAN DEFAULT false,
-  image TEXT DEFAULT 'image not found',
+  img TEXT DEFAULT 'image not found',
   groups_id INTEGER REFERENCES groups (id)
 );
 
