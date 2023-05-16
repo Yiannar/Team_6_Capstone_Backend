@@ -4,6 +4,7 @@ const express = require('express');
 const userController = require('./controller/userController');
 const postsController = require('./controller/postsController')
 const repliesController = require('./controller/repliesController')
+const groupsController = require('./controller/groupsController')
 const morgan = require('morgan');
 
 // CONFIGURATION
@@ -18,7 +19,8 @@ app.use(morgan('tiny'));
 // USER ROUTES
 app.use('/users', userController);
 app.use('/posts', postsController);
-// app.use('/replies', repliesController);
+app.use('/reply', repliesController);
+app.use('/groups', groupsController)
 
 // ROUTES
 app.get('/', (req, res) => {
