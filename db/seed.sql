@@ -9,8 +9,8 @@ INSERT INTO groups (title, about, img) VALUES
 
 
 INSERT INTO profile (first_name,last_name, email, password, age, zipCode, pace, gender,verified,image, groups_id) VALUES
-('Jane', 'Doe', 'Janedoe@gmail.com', 'apple', 23, '11207', '4', 'Female',true,'https://d39l2hkdp2esp1.cloudfront.net/img/photo/206402/206402_00_2x.jpg', 1),
-('John', 'Doe', 'Johndoe@gmail.com', 'orange', 27, '11106', '2', 'Male', true,'https://img.freepik.com/free-photo/side-view-man-jumping-outdoors_23-2149557835.jpg?w=2000', 2 );
+('Jane', 'Doe', 'Janedoe@gmail.com', 'apple', 23, 11207, '4', 'Female',true,'https://d39l2hkdp2esp1.cloudfront.net/img/photo/206402/206402_00_2x.jpg', 1),
+('John', 'Doe', 'Johndoe@gmail.com', 'orange', 27, 11106, '2', 'Male', true,'https://img.freepik.com/free-photo/side-view-man-jumping-outdoors_23-2149557835.jpg?w=2000', 2 );
 
 
 
