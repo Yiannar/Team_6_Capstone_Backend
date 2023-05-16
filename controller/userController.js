@@ -6,7 +6,7 @@ const {
   createUser,
   deleteUser,
   updateUser,
-} = require('../queries/user');
+} = require('../queries/user').default;
 
 // Index route
 users.get('/', async (req, res) => {

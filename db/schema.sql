@@ -6,12 +6,6 @@ CREATE DATABASE user_profile;
 -- make table for login  
 -- make table for authentication
 -- if micorsoft authentication  then verification is verified
-DROP TABLE IF EXISTS login;
-
-CREATE TABLE login(
-    email TEXT UNIQUE NOT NULL,
-    password TEXT UNIQUE NOT NULL
-)
 
 DROP TABLE IF EXISTS profile;
 
@@ -28,13 +22,23 @@ CREATE TABLE profile (
   verified BOOLEAN DEFAULT false
 );
 
-DROP TABLE IF EXISTS ratings;
+DROP TABLE IF EXISTS posts;
 
-CREATE TABLE ratings(
-  rating_id SERIAL PRIMARY KEY,
-  route_name VARCHAR(255) NOT NULL,
-  profile_id INT NOT NULL,
-  rating_value INT NOT NULL,
-  location VARCHAR(50) NOT NULL,
-  FOREIGN KEY (profile_id) REFERENCES profile (id)
+CREATE TABLE posts(
+    post_id PRIMARY KEY,
+    post TEXT,
+    date TEXT NOT NULL,
+    FOREGIN KEY(author) REFERENCES profile(id),
+    FOREGIN KEY(group) REFERENCES group(group_id)
+);
+
+DROP TABLE IF EXISTS replies;
+
+CREATE TABLE replies(
+    replies_id PRIMARY KEY,
+    reply TEXT,
+    date TEXT NOT NULL,
+    FOREGIN KEY(post) REFERENCES posts(post_id),
+    FOREGIN KEY(author) REFERENCES profile(id),
+    FOREGIN KEY(group) REFERENCES group(group_id)
 );
