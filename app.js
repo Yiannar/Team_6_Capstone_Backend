@@ -15,6 +15,7 @@ app.use(morgan('tiny'));
 
 // USER ROUTES
 app.use('/users', userController);
+app.use('/groups/bulletin', bulletinController);
 
 // ROUTES
 app.get('/', (req, res) => {

@@ -22,23 +22,14 @@ CREATE TABLE profile (
   verified BOOLEAN DEFAULT false
 );
 
-DROP TABLE IF EXISTS posts;
+DROP TABLE IF EXISTS bulletin (
+  bulletin_id INT PRIMARY KEY,
+  title VARCHAR(255) NOT NULL,
+  message TEXT NOT NULL,
+  author TEXT NOT NULL,
+  date TEXT NOT NULL
+  FOREIGN KEY(author) REFERENCES profile (id)
+  -- group TEXT NOT NULL,
+  FOREIGN KEY(group) REFERENCES group(group_id)
+)
 
-CREATE TABLE posts(
-    post_id PRIMARY KEY,
-    post TEXT,
-    date TEXT NOT NULL,
-    FOREGIN KEY(author) REFERENCES profile(id),
-    FOREGIN KEY(group) REFERENCES group(group_id)
-);
-
-DROP TABLE IF EXISTS replies;
-
-CREATE TABLE replies(
-    replies_id PRIMARY KEY,
-    reply TEXT,
-    date TEXT NOT NULL,
-    FOREGIN KEY(post) REFERENCES posts(post_id),
-    FOREGIN KEY(author) REFERENCES profile(id),
-    FOREGIN KEY(group) REFERENCES group(group_id)
-);
