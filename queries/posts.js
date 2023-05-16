@@ -43,11 +43,12 @@ const deletePost = async (id) =>{
     }
 };
 
-const updatePost = async (id, post) =>{
+const updatePost = async (id, singlePost) =>{
+    let {post, date, author_id, groups_id} = singlePost
     try {
-        const updatedPost = await db.many(
-            'UPDATE post SET post=$1 WHERE id=$2 RETURNING *',
-            [post, id]
+        const updatedPost = await db.one(
+            'UPDATE posts SET post=$1, date=$2, author_id=$3, groups_id=$4 WHERE id=$5 RETURNING *',
+            [post, date, author_id, groups_id, id]
         )
         return updatedPost
     } catch (error) {

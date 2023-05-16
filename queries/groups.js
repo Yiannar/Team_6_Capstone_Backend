@@ -22,8 +22,8 @@ const createGroup= async (groups) =>{
     let {title, about, img} = groups
     try{
         const newGroup = await db.one(
-            'INSERT INTO groups(title, about, img) VALUES ($1, $2, $3, ) RETURNING *',
-            [title, about, img ]
+            'INSERT INTO groups(title, about, img) VALUES ($1, $2, $3) RETURNING *',
+            [title, about, img]
         ) 
         return newGroup
     } catch(error){
@@ -46,7 +46,7 @@ const deleteGroup = async (id) =>{
 const updateGroup = async (id, groups) =>{
   let {title, about, img} = groups
     try {
-        const updatedGroup = await db.many(
+        const updatedGroup = await db.one(
             'UPDATE groups SET title=$1, about=$2, img=$3 WHERE id=$4 RETURNING *',
             [title, about, img, id ]
         )
