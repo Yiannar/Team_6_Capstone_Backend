@@ -12,3 +12,17 @@ INSERT INTO profile (first_name,last_name, email, password, age, zipCode, pace, 
 INSERT INTO login(email)VALUES
 ('Janedoe@gmail.com')
 ('Johndoe@gmail.com')
+
+
+\c posts;
+
+INSERT INTO posts(post, date)
+('Hey I am available to meet today', 'March 15th,2023')
+('Hey I am not available to meet today', 'March 15th,2023')
+
+\c replies;
+
+INSERT INTO replies(reply, date)
+('Hey that sounds great cannot wait to meet up! ', 'March 15th,2023')
+('Hey oh no I really wanted to meet up with you', 'March 15th,2023')
+

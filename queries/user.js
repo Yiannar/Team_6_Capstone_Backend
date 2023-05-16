@@ -1,9 +1,8 @@
-const db = require('../db/dbConfig');
-
+const db = require('../db/dbConfig')
 const getAllUsers = async () => {
   console.log(db);
   try {
-    const allUsers = await db.any('SELECT * FROM profile');
+    const allUsers = await any('SELECT * FROM profile');
     return allUsers;
   } catch (error) {
     return error;
@@ -12,7 +11,7 @@ const getAllUsers = async () => {
 
 const getUser = async (id) => {
   try {
-    const user = await db.one('SELECT * FROM profile WHERE id=$1', id);
+    const user = await one('SELECT * FROM profile WHERE id=$1', id);
     return user;
   } catch (error) {
     return error;
@@ -34,8 +33,10 @@ const createUser = async (profile) => {
     image,
   } = profile;
   try {
+
     const newUser = await db.one(
       'INSERT INTO profile (id,first_name,last_name,email,password,age,zipCode,pace,gender,verified,image) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING *',
+
       [
         id,
         first_name,
@@ -58,7 +59,7 @@ const createUser = async (profile) => {
 
 const deleteUser = async (id) => {
   try {
-    const deletedUser = await db.one(
+    const deletedUser = await one(
       'DELETE FROM profile WHERE id = $1 RETURNING *',
       id
     );
@@ -83,6 +84,7 @@ const updateUser = async (id, profile) => {
   } = profile;
   try {
     const updatedUser = await db.one(
+
       'UPDATE profile SET first_name=$1,last_name=$2,email=$3,password=$4,age=$5,zipCode=$6,pace=$7,gender=$8,verified=$9,image=$10 WHERE id=$11 RETURNING *',
       [
         first_name,
@@ -104,4 +106,4 @@ const updateUser = async (id, profile) => {
   }
 };
 
-module.exports = { getAllUsers, getUser, createUser, deleteUser, updateUser };
+export default { getAllUsers, getUser, createUser, deleteUser, updateUser };

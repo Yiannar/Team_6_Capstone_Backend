@@ -6,12 +6,6 @@ CREATE DATABASE user_profile;
 -- make table for login  
 -- make table for authentication
 -- if micorsoft authentication  then verification is verified
-DROP TABLE IF EXISTS login;
-
-CREATE TABLE login(
-    email TEXT UNIQUE NOT NULL,
-    password TEXT UNIQUE NOT NULL
-)
 
 DROP TABLE IF EXISTS profile;
 
@@ -38,3 +32,4 @@ DROP TABLE IF EXISTS bulletin (
   -- group TEXT NOT NULL,
   FOREIGN KEY(group) REFERENCES group(group_id)
 )
+
