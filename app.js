@@ -5,18 +5,20 @@ const userController = require('./controller/userController');
 const groupController = require('./controller/groupsController');
 const loginController = require('./controller/loginController');
 const registrationController = require('./controller/dashboard');
-const bulletinController = require('./controller/bulletinController');
+const postsController = require('./controller/postsController')
+const repliesController = require('./controller/repliesController')
+const groupsController = require('./controller/groupsController')
 const morgan = require('morgan');
 
 // CONFIGURATION
 const app = express();
-
 
 // MIDDLEWARE
 app.use(express.json());
 app.use(cors());
 app.use(express.json());
 app.use(morgan('tiny'));
+app.use(express.urlencoded({ extended: true }));
 
 // Error handler middleware
 app.use((err, req, res, next) => {
@@ -61,6 +63,10 @@ app.use((req, res, next) => {
 
 // USER ROUTES
 app.use('/users', userController);
+app.use('/posts', postsController);
+app.use('/reply', repliesController);
+
+console.log(`${req.method} ${req.url}`);
 
 // LOGIN ROUTE
 app.use('/login', loginController);
@@ -69,7 +75,7 @@ app.use('/login', loginController);
 app.use('/groups', groupController);
 
 // BULLETIN ROUTES
-app.use('/groups/bulletin', bulletinController);
+// app.use('/groups/bulletin', bulletinController);
 
 // Register and Login Routes
 app.post('/login', loginController.login);
@@ -92,6 +98,10 @@ app.get('/registrationForm', (req, res) => {
 // 404 PAGE
 app.get('*', (req, res) => {
   res.status(404).send('Page not found');
+});
+
+app.get("*", (req, res) => {
+  res.redirect("/not-found");
 });
 
 // EXPORT

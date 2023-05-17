@@ -11,11 +11,9 @@ INSERT INTO profile (first_name,last_name, email, password, age, zipCode, pace, 
 ('John', 'Doe', 'Johndoe@gmail.com', 'orange', 27, 11106, '2', 'Male', true,'https://img.freepik.com/free-photo/side-view-man-jumping-outdoors_23-2149557835.jpg?w=2000', 2 );
 
 
-
 INSERT INTO posts(post, date, author_id, groups_id) VALUES
 ('Hey I am available to meet today', 'March 15th,2023', 1, 1),
 ('Hey I am not available to meet today', 'March 15th,2023', 2, 2);
-
 
 
 INSERT INTO replies(reply, date, post_id, author_id) VALUES
