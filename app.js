@@ -5,11 +5,14 @@ const userController = require('./controller/userController');
 const groupController = require('./controller/groupsController');
 const loginController = require('./controller/loginController');
 const registrationController = require('./controller/registrationController');
+const postsController = require('./controller/postsController')
+const repliesController = require('./controller/repliesController')
+const groupsController = require('./controller/groupsController')
 const morgan = require('morgan');
 
 // CONFIGURATION
 const app = express();
-const port = 3333; 
+
 // post should change to 3003 ...
 
 // MIDDLEWARE
@@ -62,6 +65,8 @@ app.use((req, res, next) => {
 
 // USER ROUTES
 app.use('/users', userController);
+app.use('/posts', postsController);
+app.use('/reply', repliesController);
 
 console.log(`${req.method} ${req.url}`);
 // LOGIN ROUTE
@@ -74,7 +79,7 @@ console.log(`${req.method} ${req.url}`);
 app.post('/login', loginController.login);
 app.post('/register', registrationController.register);
 
-app.use('/groups/bulletin', bulletinController);
+app.use('/groups', groupsController)
 >>>>>>> cbcba01c002b3b44946e0a7901733c89f3100950
 
 // ROUTES

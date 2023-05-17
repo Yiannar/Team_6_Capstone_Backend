@@ -1,13 +1,20 @@
 DROP DATABASE IF EXISTS user_profile;
-DROP DATABASE IF EXISTS login;
-
-CREATE DATABASE login;
-CREATE DATABASE user_profile; 
-CREATE DATABASE registration;
-CREATE DATABASE groups;
-
+CREATE DATABASE user_profile;
 
 \c user_profile; 
+
+-- make table for login  
+-- make table for authentication
+-- if micorsoft authentication  then verification is verified
+
+DROP TABLE IF EXISTS groups;
+
+CREATE TABLE groups (
+   id SERIAL PRIMARY KEY,
+   title TEXT NOT NULL,
+   about TEXT,
+   img TEXT NOT NULL
+);
 
 DROP TABLE IF EXISTS profile;
 
@@ -21,16 +28,29 @@ CREATE TABLE profile (
   location TEXT,
   pace TEXT,
   gender TEXT,
-  verified BOOLEAN DEFAULT false
+  verified BOOLEAN DEFAULT false,
+  img TEXT DEFAULT 'image not found',
+  groups_id INTEGER REFERENCES groups (id)
 );
 
-DROP TABLE IF EXISTS ratings;
 
-CREATE TABLE ratings(
-  rating_id SERIAL PRIMARY KEY,
-  route_name VARCHAR(255) NOT NULL,
-  profile_id INT NOT NULL,
-  rating_value INT NOT NULL,
-  location VARCHAR(50) NOT NULL,
-  FOREIGN KEY (profile_id) REFERENCES profile (id)
+
+DROP TABLE IF EXISTS posts;
+
+CREATE TABLE posts(
+    id SERIAL PRIMARY KEY,
+    post TEXT,
+    date TEXT NOT NULL,
+    author_id INTEGER REFERENCES profile(id),
+   groups_id INTEGER REFERENCES groups(id)
+);
+
+DROP TABLE IF EXISTS replies;
+
+CREATE TABLE replies(
+    id SERIAL PRIMARY KEY,
+    reply TEXT,
+    date TEXT NOT NULL,
+    post_id INTEGER REFERENCES posts(id),
+    author_id INTEGER REFERENCES profile(id)
 );

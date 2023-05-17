@@ -1,82 +1,61 @@
-const db = require("../models");
+const express = require('express');
+const groups = express.Router()
+const {getAllGroups, getGroup, createGroup, deleteGroup,updateGroup} = require('../queries/groups')
 
-const groupController = {};
-
-groupController.getAllGroups = async (req, res) => {
-  try {
-    const groups = await db.Group.findAll();
-    res.status(200).json(groups);
-  } catch (err) {
-    console.log(err);
-    res.status(500).json({ error: "Internal server error" });
+// Index route
+groups.get('/', async (req, res) => {
+  const allgroups = await getAllGroups();
+  if (allgroups[0]) {
+    res.status(200).json(allgroups);
+  } else {
+    res.status(500).json({ error: 'Unable to get all groups' });
   }
-};
+});
 
-groupController.getGroupById = async (req, res) => {
-  try {
-    const group = await db.Group.findOne({ where: { id: req.params.id } });
-    if (!group) {
-      res.status(404).json({ error: "Group not found" });
-    } else {
-      res.status(200).json(group);
-    }
-  } catch (err) {
-    console.log(err);
-    res.status(500).json({ error: "Internal server error" });
+// Show Route
+
+groups.get('/:id', async (req, res) => {
+  const { id } = req.params;
+  const group = await getGroup(id);
+  console.log('group', group);
+  if (!group.message) {
+    res.status(200).json(group);
+  } else {
+    res.status(400).json({ error: ' Group Not found' });
   }
-};
-
-groupController.createGroup = async (req, res) => {
+});
+//CREATE
+groups.post('/', async (req, res) => {
   try {
-    const group = await db.Group.create({
-      name: req.body.name,
-      description: req.body.description,
-      location: req.body.location,
-      adminId: req.user.id // assuming you have middleware to authenticate the user and store their id in req.user
-    });
-    res.status(201).json(group);
-  } catch (err) {
-    console.log(err);
-    res.status(500).json({ error: "Internal server error" });
+    const group = await createGroup(req.body);
+    res.status(200).json(group);
+  } catch (error) {
+    res.status(500).json({ error: 'Cannot create a group error' });
   }
-};
+});
 
-groupController.updateGroup = async (req, res) => {
+// Delete
+
+groups.delete('/:id', async (req, res) => {
   try {
-    const group = await db.Group.findOne({ where: { id: req.params.id } });
-    if (!group) {
-      res.status(404).json({ error: "Group not found" });
-    } else if (group.adminId !== req.user.id) {
-      res.status(403).json({ error: "You are not authorized to update this group" });
-    } else {
-      await group.update({
-        name: req.body.name || group.name,
-        description: req.body.description || group.description,
-        location: req.body.location || group.location
-      });
-      res.status(200).json(group);
-    }
-  } catch (err) {
-    console.log(err);
-    res.status(500).json({ error: "Internal server error" });
+    const { id } = req.params;
+    const deletedGroup = await deleteGroup(id);
+    res.status(200).json(deletedGroup);
+  } catch (error) {
+    res.status(500).json({ error: 'invalid request to remove a group' });
   }
-};
+});
 
-groupController.deleteGroup = async (req, res) => {
+// Update
+
+groups.put('/:id', async (req, res) => {
   try {
-    const group = await db.Group.findOne({ where: { id: req.params.id } });
-    if (!group) {
-      res.status(404).json({ error: "Group not found" });
-    } else if (group.adminId !== req.user.id) {
-      res.status(403).json({ error: "You are not authorized to delete this group" });
-    } else {
-      await group.destroy();
-      res.status(204).end();
-    }
-  } catch (err) {
-    console.log(err);
-    res.status(500).json({ error: "Internal server error" });
+    const { id } = req.params;
+    const updatedGroup = await updateGroup(id, req.body);
+    res.status(200).json(updatedGroup);
+  } catch (error) {
+    res.status(500).json({ error: 'Cannot update group error' });
   }
-};
+});
 
-module.exports = groupController;
+module.exports = groups;
