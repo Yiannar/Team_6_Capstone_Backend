@@ -2,9 +2,10 @@
 const cors = require('cors');
 const express = require('express');
 const userController = require('./controller/userController');
-const postsController = require('./controller/postsController')
-const repliesController = require('./controller/repliesController')
-const groupsController = require('./controller/groupsController')
+const postsController = require('./controller/postsController');
+const repliesController = require('./controller/repliesController');
+const groupsController = require('./controller/groupsController');
+const userGroupsController = require('./controller/userGroupsController');
 const morgan = require('morgan');
 
 // CONFIGURATION
@@ -20,7 +21,8 @@ app.use(morgan('tiny'));
 app.use('/users', userController);
 app.use('/posts', postsController);
 app.use('/reply', repliesController);
-app.use('/groups', groupsController)
+app.use('/groups', groupsController);
+app.use('/userGroups', userGroupsController);
 
 // ROUTES
 app.get('/', (req, res) => {
