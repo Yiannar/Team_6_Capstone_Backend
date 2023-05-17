@@ -1,11 +1,5 @@
 DROP DATABASE IF EXISTS user_profile;
-DROP DATABASE IF EXISTS login;
-
-CREATE DATABASE login;
-CREATE DATABASE user_profile; 
-CREATE DATABASE registration;
-CREATE DATABASE groups;
-
+CREATE DATABASE user_profile;
 
 \c user_profile; 
 

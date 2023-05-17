@@ -1,5 +1,4 @@
-const db = require('../db/dbConfig');
-
+const db = require('../db/dbconfig')
 const getAllUsers = async () => {
   console.log(db);
   try {
@@ -21,7 +20,6 @@ const getUser = async (id) => {
 
 const createUser = async (profile) => {
   let {
-    user_id,
     first_name,
     last_name,
     email,
@@ -31,13 +29,13 @@ const createUser = async (profile) => {
     pace,
     gender,
     verified,
-    image,
+    img,
+    groups_id
   } = profile;
   try {
     const newUser = await db.one(
-      'INSERT INTO profile (user_id,first_name,last_name,email,password,age,location,pace,gender,verified,image) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING *',
+      'INSERT INTO profile (first_name,last_name,email,password,age,zipCode,pace,gender,verified,img, groups_id) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING *',
       [
-        user_id,
         first_name,
         last_name,
         email,
@@ -47,7 +45,8 @@ const createUser = async (profile) => {
         pace,
         gender,
         verified,
-        image,
+        img,
+        groups_id
       ]
     );
     return newUser;
@@ -68,7 +67,7 @@ const deleteUser = async (id) => {
   }
 };
 
-const updateUser = async (id, profile) => {
+const updateUser = async  (id, profile) => {
   let {
     user_id,
     first_name,
@@ -80,11 +79,12 @@ const updateUser = async (id, profile) => {
     pace,
     gender,
     verified,
-    image,
+    img,
+    groups_id
   } = profile;
   try {
     const updatedUser = await db.one(
-      'UPDATE profile SET first_name=$1,last_name=$2,email=$3,password=$4,age=$5,location=$6,pace=$7,gender=$8,verified=$9,image=$10 WHERE id=$11 RETURNING *',
+      'UPDATE profile SET first_name=$1,last_name=$2,email=$3,password=$4,age=$5,zipCode=$6,pace=$7,gender=$8,verified=$9,img=$10, groups_id=$11 WHERE id=$12 RETURNING *',
       [
         first_name,
         last_name,
@@ -95,8 +95,9 @@ const updateUser = async (id, profile) => {
         pace,
         gender,
         verified,
-        id,
-        image,
+        img,
+        groups_id,
+        id
       ]
     );
     return updatedUser;
