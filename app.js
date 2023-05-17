@@ -4,7 +4,7 @@ const express = require('express');
 const userController = require('./controller/userController');
 const groupController = require('./controller/groupsController');
 const loginController = require('./controller/loginController');
-const registrationController = require('./controller/registrationController');
+const registrationController = require('./controller/dashboard');
 const postsController = require('./controller/postsController')
 const repliesController = require('./controller/repliesController')
 const groupsController = require('./controller/groupsController')
@@ -12,8 +12,6 @@ const morgan = require('morgan');
 
 // CONFIGURATION
 const app = express();
-
-// post should change to 3003 ...
 
 // MIDDLEWARE
 app.use(express.json());
@@ -69,23 +67,32 @@ app.use('/posts', postsController);
 app.use('/reply', repliesController);
 
 console.log(`${req.method} ${req.url}`);
+
 // LOGIN ROUTE
 app.use('/login', loginController);
-console.log(`${req.method} ${req.url}`);
-//Groups Routes 
+
+// GROUPS ROUTES
 app.use('/groups', groupController);
-console.log(`${req.method} ${req.url}`);
 
+// BULLETIN ROUTES
+// app.use('/groups/bulletin', bulletinController);
+
+// Register and Login Routes
 app.post('/login', loginController.login);
-app.post('/register', registrationController.register);
 
-app.use('/groups', groupsController)
->>>>>>> cbcba01c002b3b44946e0a7901733c89f3100950
+app.post('/register', registrationController.register);
 
 // ROUTES
 app.get('/', (req, res) => {
   res.send('Welcome to Kyrun App');
-  console.log();
+});
+
+// Registration Form Route
+app.get('/registrationForm', (req, res) => {
+  // Handle the GET request for the registration form
+  // Return the registration form HTML or render a registration form template
+  // Example:
+  res.send('This is the registration form'); // Replace this with your actual registration form implementation
 });
 
 // 404 PAGE
