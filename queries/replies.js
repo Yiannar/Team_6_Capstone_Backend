@@ -47,7 +47,7 @@ const updateReplies = async (id, replies) =>{
     // let {reply, date, post_id, author_id}= replies;
     try {
         const updatedReply = await db.one(
-            'UPDATE replies SET reply=$1, date=$2, post_id=$3, author_id=$4 WHERE id=$5 RETURNING *'
+            'UPDATE replies SET reply=$1, date=$2, post_id=$3, author_id=$4 WHERE id=$5 RETURNING *',
             [
             replies.reply, 
             replies.date,
