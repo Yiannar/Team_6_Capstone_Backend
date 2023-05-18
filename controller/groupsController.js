@@ -1,6 +1,12 @@
 const express = require('express');
-const groups = express.Router()
-const {getAllGroups, getGroup, createGroup, deleteGroup,updateGroup} = require('../queries/groups')
+const groups = express.Router();
+const {
+  getAllGroups,
+  getGroup,
+  createGroup,
+  deleteGroup,
+  updateGroup,
+} = require('../queries/groups');
 
 // Index route
 groups.get('/', async (req, res) => {

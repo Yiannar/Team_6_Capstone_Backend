@@ -1,19 +1,31 @@
 const express = require('express');
 const app = require('./app');
+const cors = require("cors");
 
 
 require("dotenv").config();
 const PORT = process.env.PORT;
 
-app.listen(PORT, ()=>{
-    console.log(`listening on port ${PORT}`)
-})
+app.use("/authentication", require("./controller/jwtAuth"));
+
+app.use("/dashboard", require("./controller/dashboard"));
+
+
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});
 
 // const httpServer = require("http").createServer(app);
 // const cors = require('cors')
 
 // app.use(cors())
+// app.use(express.json());
 
+// const socketIO = require('socket.io')(httpServer, {
+//     cors:{
+//         origin: 'http://localhost:3000'
+//     }
+// })
 
 
 // const socketIO = require('socket.io')(httpServer, {
@@ -50,26 +62,5 @@ app.listen(PORT, ()=>{
 // });
 // console.log(users);
 
-// app.get('/', (req, res) => {
-//     res.send('<h1>Hello world</h1>');
-// });
 
-// socketIO.on("connection", (socket) => {
-//     socket.on("list items", async (callback) => {
-//       try {
-//         const items = await findItems();
-//         callback({
-//           status: "OK",
-//           items
-//         });
-//       } catch (e) {
-//         callback({
-//           status: "NOK"
-//         });
-//       }
-//     });
-//   });
 
-// httpServer.listen(PORT, () => {
-//   console.log(`Server listening on ${PORT}`);
-// });
