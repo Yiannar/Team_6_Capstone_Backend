@@ -7,6 +7,16 @@ CREATE DATABASE user_profile;
 -- make table for authentication
 -- if micorsoft authentication  then verification is verified
 
+DROP TABLE IF EXISTS users;
+
+CREATE TABLE users (
+  id SERIAL PRIMARY KEY,
+  user_id uuid DEFAULT uuid_generate_v4(),
+  user_email VARCHAR(255) NOT NULL UNIQUE,
+  user_password VARCHAR(255) NOT NULL,
+  PRIMARY KEY(user_id)
+);
+
 DROP TABLE IF EXISTS groups;
 
 CREATE TABLE groups (
