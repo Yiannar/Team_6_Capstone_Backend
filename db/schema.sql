@@ -1,5 +1,5 @@
 DROP DATABASE IF EXISTS user_profile;
-CREATE DATABASE user_profile; 
+CREATE DATABASE user_profile;
 
 \c user_profile; 
 
@@ -12,11 +12,11 @@ CREATE TABLE profile (
   id SERIAL PRIMARY KEY,
   first_name TEXT,
   last_name TEXT,
-  email TEXT UNIQUE NOT NULL,
-  password TEXT UNIQUE NOT NULL,
+  email TEXT UNIQUE,
+  password TEXT,
   age INT,
-  zipCode INT,
-  pace INT,
+  location TEXT,
+  pace TEXT,
   gender TEXT,
   verified BOOLEAN DEFAULT false,
   img TEXT DEFAULT 'image not found',
