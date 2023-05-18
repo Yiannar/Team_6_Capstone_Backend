@@ -27,7 +27,7 @@ const joinAGroup = async (profileID, groupID) => {
   try {
     const groupJoined = await db.one(
       'INSERT INTO profile_groups(profileID, groupID) VALUES ($1, $2) RETURNING *',
-      (profileID, groupID)
+      [profileID, groupID]
     );
     return groupJoined;
   } catch (error) {
@@ -38,7 +38,7 @@ const leaveAGroup = async (profileID, groupID) => {
   try {
     const leftGroup = await db.one(
       'DELETE FROM profile_groups WHERE profileID = $1 AND groupID=$2 RETURNING *',
-      (profileID, groupID)
+    [profileID, groupID]
     );
     return leftGroup;
   } catch (error) {
