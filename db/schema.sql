@@ -15,11 +15,11 @@ CREATE TABLE profile (
   email TEXT UNIQUE,
   password TEXT,
   age INT,
-  location TEXT,
+  zipCode INTEGER,
   pace TEXT,
   gender TEXT,
   verified BOOLEAN DEFAULT false,
-  img TEXT DEFAULT 'image not found',
+  img TEXT DEFAULT 'image not found'
   -- groups_id INTEGER REFERENCES groups (id)
 );
 
@@ -37,7 +37,7 @@ CREATE TABLE profile_groups(
   profile_id INTEGER REFERENCES profile(id) ON DELETE CASCADE,
   groups_id INTEGER REFERENCES groups(id) ON DELETE CASCADE,
   PRIMARY KEY (profile_id,groups_id)
-)
+);
 
 DROP TABLE IF EXISTS posts;
 
