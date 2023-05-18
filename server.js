@@ -6,10 +6,6 @@ const cors = require("cors");
 require("dotenv").config();
 const PORT = process.env.PORT;
 
-app.use("/authentication", require("./controller/jwtAuth"));
-
-app.use("/dashboard", require("./controller/dashboard"));
-
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
