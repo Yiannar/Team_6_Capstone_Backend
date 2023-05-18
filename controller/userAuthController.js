@@ -18,7 +18,7 @@ const tripController = require("./tripController.js");
 users.use("/usernames", usernameController);
 users.use("/emails", emailController);
 users.use("/auth", authController);
-users.use("/:username/trips", tripController);
+
 
 // Index
 users.get("/", async (req, res) => {

@@ -6,12 +6,20 @@ const validInfo = require("../middleware/validInfo");
 const jwtGenerator = require("../utils/jwtGenerator");
 const authorize = require("../middleware/authorize");
 
-//authorizeentication
+
+// 3. Bcrypt the user passwword for security 
+
+// 4. enter the new user inside db 
+
+// 5. generating  our jwt token 
+
 
 router.post("/register", validInfo, async (req, res) => {
+  // 1. destructure the req.body (name, email, password)
   const { email, name, password } = req.body;
 
   try {
+    // 2. check if user exist (if user exist then throw and error 
     const user = await pool.query("SELECT * FROM users WHERE user_email = $1", [
       email
     ]);
