@@ -18,6 +18,8 @@ CREATE TABLE users (
   PRIMARY KEY(user_id)
 );
 
+INSERT INTO users (user_name, user_email, user_password) VALUES ('henry', 'henryly213@gmail.com', 'kthl8822');
+
 DROP TABLE IF EXISTS profile;
 
 CREATE TABLE profile (

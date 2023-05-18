@@ -7,7 +7,7 @@ const repliesController = require('./controller/repliesController');
 const groupsController = require('./controller/groupsController');
 const userGroupsController = require('./controller/userGroupsController');
 const bulletinController = require('./controller/bulletinController');
-const loginController = require('./controller/loginController');
+// const loginController = require('./controller/loginController');
 const registrationController = require('./controller/dashboard');
 const morgan = require('morgan');
 
@@ -73,17 +73,17 @@ app.use('/reply', repliesController);
 app.use('/groups', groupsController);
 app.use('/userGroups', userGroupsController);
 
-console.log(`${req.method} ${req.url}`);
+// console.log(`${req.method} ${req.url}`);
 
 // LOGIN ROUTE
-app.use('/login', loginController);
+// app.use('/login', loginController);
 
 // BULLETIN ROUTES
 app.use('/groups/bulletin', bulletinController);
 
 // Register and Login Routes
-app.post('/login', loginController.login);
-app.post('/register', registrationController.register);
+// app.post('/login', loginController.login);
+// app.post('/register', registrationController.register);
 
 // ROUTES
 app.get('/', (req, res) => {

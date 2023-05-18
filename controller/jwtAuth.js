@@ -1,11 +1,10 @@
 const express = require("express");
-const router = express.Router();
+const auth = express.Router();
 const bcrypt = require("bcrypt");
-const pool = require("../db");
+// const pool = require("../db");
 const validInfo = require("../middleware/validInfo");
 const jwtGenerator = require("../utils/jwtGenerator");
 const authorize = require("../middleware/authorize");
-
 
 // 3. Bcrypt the user passwword for security 
 
@@ -14,7 +13,7 @@ const authorize = require("../middleware/authorize");
 // 5. generating  our jwt token 
 
 
-router.post("/register", validInfo, async (req, res) => {
+auth.post("/register", validInfo, async (req, res) => {
   // 1. destructure the req.body (name, email, password)
   const { email, name, password } = req.body;
 
@@ -45,7 +44,7 @@ router.post("/register", validInfo, async (req, res) => {
   }
 });
 
-router.post("/login", validInfo, async (req, res) => {
+auth.post("/login", validInfo, async (req, res) => {
   const { email, password } = req.body;
 
   try {
@@ -73,7 +72,7 @@ router.post("/login", validInfo, async (req, res) => {
   }
 });
 
-router.post("/verify", authorize, (req, res) => {
+auth.post("/verify", authorize, (req, res) => {
   try {
     res.json(true);
   } catch (err) {
@@ -82,4 +81,4 @@ router.post("/verify", authorize, (req, res) => {
   }
 });
 
-module.exports = router;
+module.exports = auth;
