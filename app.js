@@ -2,12 +2,13 @@
 const cors = require('cors');
 const express = require('express');
 const userController = require('./controller/userController');
-const groupController = require('./controller/groupsController');
+const postsController = require('./controller/postsController');
+const repliesController = require('./controller/repliesController');
+const groupsController = require('./controller/groupsController');
+const userGroupsController = require('./controller/userGroupsController');
+const bulletinController = require('./controller/bulletinController'
 const loginController = require('./controller/loginController');
 const registrationController = require('./controller/dashboard');
-const postsController = require('./controller/postsController')
-const repliesController = require('./controller/repliesController')
-const groupsController = require('./controller/groupsController')
 const morgan = require('morgan');
 
 // CONFIGURATION
@@ -65,22 +66,22 @@ app.use((req, res, next) => {
 app.use('/users', userController);
 app.use('/posts', postsController);
 app.use('/reply', repliesController);
+app.use('/groups', groupsController);
+app.use('/userGroups', userGroupsController);
+
 
 console.log(`${req.method} ${req.url}`);
 
 // LOGIN ROUTE
 app.use('/login', loginController);
 
-// GROUPS ROUTES
-app.use('/groups', groupController);
-
 // BULLETIN ROUTES
-// app.use('/groups/bulletin', bulletinController);
+app.use('/groups/bulletin', bulletinController);
 
 // Register and Login Routes
 app.post('/login', loginController.login);
-
 app.post('/register', registrationController.register);
+
 
 // ROUTES
 app.get('/', (req, res) => {
@@ -98,10 +99,6 @@ app.get('/registrationForm', (req, res) => {
 // 404 PAGE
 app.get('*', (req, res) => {
   res.status(404).send('Page not found');
-});
-
-app.get("*", (req, res) => {
-  res.redirect("/not-found");
 });
 
 // EXPORT

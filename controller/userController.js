@@ -1,6 +1,12 @@
 const express = require('express');
 const users = express.Router();
-const { getAllUsers, getUser, createUser, deleteUser, updateUser } = require('../queries/user')
+const {
+  getAllUsers,
+  getUser,
+  createUser,
+  deleteUser,
+  updateUser,
+} = require('../queries/user');
 
 // Index route
 users.get('/', async (req, res) => {
