@@ -6,7 +6,7 @@ const postsController = require('./controller/postsController');
 const repliesController = require('./controller/repliesController');
 const groupsController = require('./controller/groupsController');
 const userGroupsController = require('./controller/userGroupsController');
-const bulletinController = require('./controller/bulletinController'
+const bulletinController = require('./controller/bulletinController');
 const loginController = require('./controller/loginController');
 const registrationController = require('./controller/dashboard');
 const morgan = require('morgan');
@@ -32,7 +32,9 @@ app.use((req, res, next) => {
   const { name, email, password } = req.body;
 
   if (!name || !email || !password) {
-    return res.status(400).json({ error: 'Name, email, and password are required' });
+    return res
+      .status(400)
+      .json({ error: 'Name, email, and password are required' });
   }
 
   // Check that email is in a valid format
@@ -43,7 +45,9 @@ app.use((req, res, next) => {
 
   // Check that password is at least 8 characters long
   if (password.length < 8) {
-    return res.status(400).json({ error: 'Password must be at least 8 characters long' });
+    return res
+      .status(400)
+      .json({ error: 'Password must be at least 8 characters long' });
   }
 
   next();
@@ -69,7 +73,6 @@ app.use('/reply', repliesController);
 app.use('/groups', groupsController);
 app.use('/userGroups', userGroupsController);
 
-
 console.log(`${req.method} ${req.url}`);
 
 // LOGIN ROUTE
@@ -81,7 +84,6 @@ app.use('/groups/bulletin', bulletinController);
 // Register and Login Routes
 app.post('/login', loginController.login);
 app.post('/register', registrationController.register);
-
 
 // ROUTES
 app.get('/', (req, res) => {
