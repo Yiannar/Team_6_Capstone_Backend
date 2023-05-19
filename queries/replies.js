@@ -1,4 +1,4 @@
-const db = require('../db/food');
+const db = require('../db/dbConfig');
 
 const getAllReplies = async () => {
   try {
