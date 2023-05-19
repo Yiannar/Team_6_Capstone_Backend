@@ -23,7 +23,7 @@ app.use('/users', userController);
 app.use('/posts', postsController);
 app.use('/reply', repliesController);
 app.use('/groups', groupsController);
-app.use('/userGroups', userGroupsController);
+app.use('/usergroups', userGroupsController);
 
 
 // BULLETIN ROUTES

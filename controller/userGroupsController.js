@@ -21,8 +21,8 @@ usersGroups.get('/', async (req, res) => {
 
 // this gets all the group the user belongs to at that particular id
 usersGroups.get('/:profile_id/:group_id', async (req, res) => {
-  const { profileID } = req.params;
-  const group = await getAllGroupsSingleUser(id);
+  const { profile_id, group_id } = req.params;
+  const group = await getAllGroupsSingleUser(profile_id, group_id);
   console.log('group', group);
   if (!group.message) {
     res.status(200).json(group);
