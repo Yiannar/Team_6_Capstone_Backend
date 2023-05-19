@@ -1,7 +1,7 @@
-DROP DATABASE IF EXISTS user_profile;
-CREATE DATABASE user_profile;
+DROP DATABASE IF EXISTS kyrun;
+CREATE DATABASE kyrun;
 
-\c user_profile; 
+\c kyrun; 
 
 DROP TABLE IF EXISTS profile;
 

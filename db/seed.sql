@@ -1,4 +1,4 @@
-\c user_profile;
+\c kyrun;
 
 INSERT INTO profile (first_name,last_name, email, password, age, zipCode, pace, gender,verified,img) VALUES
 ('Jane', 'Doe', 'Janedoe@gmail.com', 'apple', 23, 11207, '4', 'Female',true,'https://d39l2hkdp2esp1.cloudfront.net/img/photo/206402/206402_00_2x.jpg'),

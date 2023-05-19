@@ -1,4 +1,4 @@
-const db = require('../db/dbconfig')
+const db = require('../db/food')
 
 const getAllGroups = async ()=>{
     try{
