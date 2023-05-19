@@ -20,8 +20,8 @@ usersGroups.get('/', async (req, res) => {
 });
 
 // this gets all the group the user belongs to at that particular id
-usersGroups.get('/:id', async (req, res) => {
-  const { id } = req.params;
+usersGroups.get('/:profile_id/:group_id', async (req, res) => {
+  const { profileID } = req.params;
   const group = await getAllGroupsSingleUser(id);
   console.log('group', group);
   if (!group.message) {
@@ -41,7 +41,7 @@ usersGroups.post('/:id', async (req, res) => {
   }
 });
 // This should allow the user to leave a group at that profileID,groupID hopefully
-usersGroups.delete('/:profileID/:groupID', async (req, res) => {
+usersGroups.delete('/:profile_id/:group_id', async (req, res) => {
   try {
     const { profileID, groupID } = req.params;
     const leaveGroup = await leaveAGroup(profileID, groupID);
