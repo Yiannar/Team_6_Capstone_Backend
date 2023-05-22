@@ -6,6 +6,9 @@ const cn = {
   port: process.env.PG_PORT,
   database: process.env.PG_DATABASE,
   user: process.env.PG_USER,
+  SERVER_URL: process.env.SERVER_URL,
+  CLIENT_URL: process.env.CLIENT_URL,
+  SECRET: process.env.SECRET,
 };
 
 const db = pgp(cn);

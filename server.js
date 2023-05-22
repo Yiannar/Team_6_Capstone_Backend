@@ -1,16 +1,17 @@
-const express = require('express');
-const app = require('./app');
-const cors = require("cors");
+// const express = require('express');
+//Dependencies
+const app = require('./app.js');
+// const cors = require("cors");
 
-
+//config
 require("dotenv").config();
 const PORT = process.env.PORT;
 
-app.use("/authentication", require("./controller/jwtAuth"));
+// app.use("/authentication", require("./controller/jwtAuth"));
 
-app.use("/dashboard", require("./controller/dashboard"));
+// app.use("/dashboard", require("./controller/authController"));
 
-
+//listen
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
