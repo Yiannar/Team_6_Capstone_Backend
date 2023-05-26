@@ -8,19 +8,19 @@ const groupsController = require('./controller/groupsController');
 const userGroupsController = require('./controller/userGroupsController');
 const bulletinController = require('./controller/bulletinController');
 // const loginController = require('./controller/loginController');
-const authController = require('./controller/authController');
+// const authController = require('./controller/authController');
 const morgan = require('morgan');
 
 //auth 
 const { PORT, CLIENT_URL } = require('./db/dbConfig');
-const cookieParser = require('cookie-parser');
-const passport = require('passport');
+// const cookieParser = require('cookie-parser');
+// const passport = require('passport');
 
 // CONFIGURATION
 const app = express();
 
 //import passport middleware 
-require('./middleware/auth-middleware');
+// require('./middleware/auth-middleware');
 
 // MIDDLEWARE
 app.use(express.json());
