@@ -28,7 +28,9 @@ CREATE TABLE groups (
    title TEXT NOT NULL,
    about TEXT,
    img TEXT NOT NULL
+  --  location TEXT
 );
+
 DROP TABLE IF EXISTS profile_groups;
 
 CREATE TABLE profile_groups(
