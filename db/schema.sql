@@ -16,7 +16,8 @@ CREATE TABLE profile (
   pace TEXT,
   gender TEXT,
   verified BOOLEAN DEFAULT false,
-  img TEXT DEFAULT 'image not found'
+  img TEXT DEFAULT 'image not found',
+  bio TEXT
   -- groups_id INTEGER REFERENCES groups (id)
 );
 
