@@ -36,7 +36,7 @@ DROP TABLE IF EXISTS profile_groups;
 CREATE TABLE profile_groups(
   profile_id INTEGER REFERENCES profile(id) ON DELETE CASCADE,
   groups_id INTEGER REFERENCES groups(id) ON DELETE CASCADE,
-  PRIMARY KEY (profile_id,groups_id)
+  PRIMARY KEY (profile_id, groups_id)
 );
 
 DROP TABLE IF EXISTS posts;
@@ -45,8 +45,8 @@ CREATE TABLE posts(
     id SERIAL PRIMARY KEY,
     post TEXT,
     date TEXT NOT NULL,
-    author_id INTEGER REFERENCES profile(id),
-   groups_id INTEGER REFERENCES groups(id)
+    author_id INTEGER REFERENCES profile (id),
+    groups_id INTEGER REFERENCES groups (id)
 );
 
 DROP TABLE IF EXISTS replies;
@@ -55,8 +55,9 @@ CREATE TABLE replies(
     id SERIAL PRIMARY KEY,
     reply TEXT,
     date TEXT NOT NULL,
-    post_id INTEGER REFERENCES posts(id),
-    author_id INTEGER REFERENCES profile(id)
+    post_id INTEGER REFERENCES posts (id),
+    author_id INTEGER REFERENCES profile (id),
+    groups_id INTEGER REFERENCES groups (id)
 );
 
 -- 
