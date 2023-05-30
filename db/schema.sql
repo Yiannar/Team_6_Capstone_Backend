@@ -1,24 +1,10 @@
 DROP DATABASE IF EXISTS user_profile;
-CREATE DATABASE user_profile;
+CREATE DATABASE kyrun;
 
-\c user_profile; 
+\c kyrun; 
 
--- make table for login  
--- make table for authentication
--- if micorsoft authentication  then verification is verified
+\c kyrun; 
 
-
-DROP TABLE IF EXISTS users;
-
-CREATE TABLE users (
-  id SERIAL PRIMARY KEY,
-  user_id uuid DEFAULT uuid_generate_v4(),
-  user_email VARCHAR(255) NOT NULL UNIQUE,
-  user_password VARCHAR(255) NOT NULL,
-  PRIMARY KEY(user_id)
-);
-
--- INSERT INTO user_id (user_name, user_email, user_password) VALUES ('henry', 'henryly213@gmail.com', 'kthl8822');
 
 DROP TABLE IF EXISTS profile;
 
@@ -33,7 +19,8 @@ CREATE TABLE profile (
   pace TEXT,
   gender TEXT,
   verified BOOLEAN DEFAULT false,
-  img TEXT DEFAULT 'image not found'
+  img TEXT DEFAULT 'image not found',
+  bio TEXT
   -- groups_id INTEGER REFERENCES groups (id)
 );
 
@@ -44,7 +31,9 @@ CREATE TABLE groups (
    title TEXT NOT NULL,
    about TEXT,
    img TEXT NOT NULL
+  --  location TEXT
 );
+
 DROP TABLE IF EXISTS profile_groups;
 
 CREATE TABLE profile_groups(

@@ -6,9 +6,8 @@ const postsController = require('./controller/postsController');
 const repliesController = require('./controller/repliesController');
 const groupsController = require('./controller/groupsController');
 const userGroupsController = require('./controller/userGroupsController');
-const bulletinController = require('./controller/bulletinController');
-// const loginController = require('./controller/loginController');
-// const authController = require('./controller/authController');
+//const bulletinController = require('./controller/bulletinController');
+
 const morgan = require('morgan');
 
 //auth 
@@ -25,7 +24,6 @@ const app = express();
 // MIDDLEWARE
 app.use(express.json());
 app.use(cors());
-app.use(express.json());
 app.use(morgan('tiny'));
 app.use(express.urlencoded({ extended: true }));
 
@@ -34,13 +32,13 @@ app.use('/users', userController);
 app.use('/posts', postsController);
 app.use('/reply', repliesController);
 app.use('/groups', groupsController);
-app.use('/userGroups', userGroupsController);
+app.use('/usergroups', userGroupsController);
 
 // LOGIN ROUTE
 app.use('/users', userController);
 
 // BULLETIN ROUTES
-app.use('/groups/bulletin', bulletinController);
+//app.use('/groups/bulletin', bulletinController);
 
 app.use("/users", userController);
 
