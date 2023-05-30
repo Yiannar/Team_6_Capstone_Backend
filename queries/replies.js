@@ -9,9 +9,9 @@ const getAllReplies = async (post_id) => {
   }
 };
 
-const getReply = async (id) => {
+const getReply = async (post_id) => {
   try {
-    const reply = await db.one('SELECT * FROM replies WHERE id=$1', id);
+    const reply = await db.any('SELECT * FROM replies WHERE post_id=$1', post_id);
     return reply;
   } catch (error) {
     return error;

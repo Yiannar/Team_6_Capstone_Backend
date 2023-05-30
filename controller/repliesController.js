@@ -7,14 +7,25 @@ const {getAllReplies,
     updateReplies} = require('../queries/replies')
 
 // Index route
+// reply.get('/', async (req, res) => {
+//   const allReplies = await getAllReplies();
+//   if (allReplies[0]) {
+//     res.status(200).json(allReplies);
+//   } else {
+//     res.status(500).json({ error: 'Unable to get all replies' });
+//   }
+// });
+
 reply.get('/', async (req, res) => {
-  const allReplies = await getAllReplies();
+  const { post_id } = req.params
+
+  const allReplies = await getAllReplies(post_id)
   if (allReplies[0]) {
-    res.status(200).json(allReplies);
+    res.status(200).json(allReplies)
   } else {
-    res.status(500).json({ error: 'Unable to get all replies' });
+    res.status(500).json({ error: 'Internal Server Error'})
   }
-});
+})
 
 // Show Route
 
@@ -22,7 +33,7 @@ reply.get('/:id', async (req, res) => {
   const { id } = req.params;
   const replies = await getReply(id);
   console.log('reply', replies);
-  if (!replies.message) {
+  if (replies[0]) {
     res.status(200).json(replies);
   } else {
     res.status(400).json({ error: ' Replies Not found' });
