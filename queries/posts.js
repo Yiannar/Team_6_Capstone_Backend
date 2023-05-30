@@ -1,8 +1,8 @@
 const db = require('../db/dbConfig');
 
-const getAllPosts = async (post_id) => {
+const getAllPosts = async (groups_id) => {
   try {
-    const allPosts = await db.any('SELECT * FROM posts WHERE post_id=$1', post_id);
+    const allPosts = await db.any('SELECT * FROM posts WHERE groups_id=$1', groups_id);
     return allPosts;
   } catch (error) {
     return error;
