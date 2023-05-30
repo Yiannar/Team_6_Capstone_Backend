@@ -37,7 +37,7 @@ INSERT INTO profile_groups (profile_id,groups_id) VALUES
 INSERT INTO posts(post, date, author_id, groups_id) VALUES
 ('Hey I am available to meet today', 'March 15th,2023', 1, 1),
 ('Wow, John! Your HIIT workouts always leave me breathless. Keep up the amazing work!', 'March 15th,2023', 2, 2),
-('Just finished an intense HIIT workout! Feeling the burn and loving every minute of it. Who is up for a challenge?',' 2023-05-15', 3,3 ),
+('Just finished an intense HIIT workout! Feeling the burn and loving every minute of it. Who is up for a challenge?',' 2023-05-15', 3, 3 ),
 ('Excited to announce a new 12-week transformation program! Lets achieve amazing results together. DM me if you are interested!',' 2023-05-18', 4,4),
 ('Had an incredible yoga retreat over the weekend. Feeling rejuvenated and centered. Grateful for the power of yoga in my life.','2023-05-20', 5,5),
 ('Just conquered a challenging mountain biking trail. The adrenaline rush was unreal! Who is up for some outdoor adventures?','2023-05-22',6,6),
@@ -46,15 +46,15 @@ INSERT INTO posts(post, date, author_id, groups_id) VALUES
 
 
 
-INSERT INTO replies(reply, date, post_id, author_id) VALUES
-('Hey that sounds great cannot wait to meet up! ', 'March 15th,2023', 1, 1),
-('Hey oh no I really wanted to meet up with you', 'March 15th,2023', 2 ,2 ),
-('I have always wanted to try running, Kelly! Count me in for your next session. Looking forward to it!','2023-05-16', 3,3),
-('You are an inspiration, Jane! I am also training for the marathon. Lets motivate each other along the way!',' 2023-05-21', 4,4),
-('Count me in, Michael! I am ready to make some serious changes and take my fitness to the next level.',' 2023-05-25', 5,5),
-('Great job, David! Your dedication is inspiring. I am ready to take on that challenge!',' 2023-05-24', 7,7),
-('Jane, I can relate to the struggle of marathon training. It is tough, but the sense of accomplishment is worth it. Lets keep pushing and inspiring each other!','2023-05-25', 6,6),
-('You are absolutely right, Ryan! I have been neglecting mobility. Lets share some tips on improving flexibility and staying injury-free.',' 2023-05-22', 8,8);
+INSERT INTO replies(reply, date, post_id, author_id, groups_id) VALUES
+('Hey that sounds great cannot wait to meet up! ', 'March 15th,2023', 1, 1, 1),
+('Hey oh no I really wanted to meet up with you', 'March 15th,2023', 2 ,2, 2),
+('I have always wanted to try running, Kelly! Count me in for your next session. Looking forward to it!','2023-05-16', 3,3, 3),
+('You are an inspiration, Jane! I am also training for the marathon. Lets motivate each other along the way!',' 2023-05-21', 4,4,4),
+('Count me in, Michael! I am ready to make some serious changes and take my fitness to the next level.',' 2023-05-25', 5,5,5),
+('Great job, David! Your dedication is inspiring. I am ready to take on that challenge!',' 2023-05-24', 7,7,7),
+('Jane, I can relate to the struggle of marathon training. It is tough, but the sense of accomplishment is worth it. Lets keep pushing and inspiring each other!','2023-05-25', 6,6,6),
+('You are absolutely right, Ryan! I have been neglecting mobility. Lets share some tips on improving flexibility and staying injury-free.',' 2023-05-22', 8,8,8);
 
 
 
