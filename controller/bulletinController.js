@@ -1,14 +1,26 @@
 const express = require('express');
 const bulletin = express.Router();
 const {
+  getAllBulletin,
   getBulletin,
   createBulletin,
   deleteBulletin,
   updateBulletin,
 } = require('../queries/bulletin');
 
+
+bulletin.get('/', async (req, res) => {
+  const AllBulletin = await getAllBulletin();
+  if (AllBulletin[0]) {
+    res.status(200).json(AllBulletin);
+  } else {
+    res.status(500).json({ error: 'Unable to get all bulletin posts' });
+  }
+});
+
+
 // get bulletin
-bulletin.get('/groups/:id', async (req, res) => {
+bulletin.get('/:groups_id/:id', async (req, res) => {
   const { id } = req.params;
   const bulletin = await getBulletin(id);
   console.log('bulletin', bulletin);
@@ -30,7 +42,7 @@ bulletin.post('/', async (req, res) => {
 });
 
 // delete
-bulletin.delete('/:id', async (req, res) => {
+bulletin.delete('/:groups_id/:id', async (req, res) => {
   try {
     const { id } = req.params;
     const deletedBulletin = await deleteBulletin(id);
