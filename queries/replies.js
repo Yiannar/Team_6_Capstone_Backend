@@ -1,6 +1,6 @@
 const db = require('../db/dbConfig');
 
-const getAllReplies = async () => {
+const getAllReplies = async (post_id) => {
   try {
     const allReplies = await db.any('SELECT * FROM replies WHERE post_id=$1', post_id);
     return allReplies;
@@ -11,7 +11,9 @@ const getAllReplies = async () => {
 
 const getReply = async (post_id) => {
   try {
-    const reply = await db.any('SELECT * FROM replies WHERE id=$1', post_id);
+
+    const reply = await db.any('SELECT * FROM replies WHERE post_id=$1', post_id);
+
     return reply;
   } catch (error) {
     return error;
