@@ -8,8 +8,7 @@ INSERT INTO profile (first_name,last_name, email, password, age, zipCode, pace, 
 ('Michael', 'Johnson', 'michaeljohnson@example.com', 'password3', 35, 54321, '3', 'male', true, 'https://media.istockphoto.com/id/1334140079/photo/male-runner-doing-fitness-workout-athlete-exercising-over-an-orange-background.jpg?s=170667a&w=0&k=20&c=tS1LF86_BDsxSZ_d9IY7h0kIieh1uEr4V9bCJUtH19Y=', 'Marathon runner and endurance athlete. Passionate about pushing my limits and conquering long-distance races. Join me in training for your next big race!'),
 ('Emily', 'Brown', 'emilybrown@example.com', 'password4', 28, 98765, '5', 'female', true, 'https://resize.img.allw.mn/thumbs/ld/xz/j2qlfaen5c768ddbabae7116557968_1080x1080.jpg?width=1200&height=1200', 'Dance fitness enthusiast and Zumba instructor. Passionate about grooving to the rhythm while getting fit. Lets dance our way to a healthier and happier lifestyle!'),
 ('David', 'Taylor', 'davidtaylor@example.com', 'password5', 32, 13579, '7', 'male', true, 'https://www.themanual.com/wp-content/uploads/sites/9/2021/08/gettyimages-1129440598.jpg?fit=800%2C800&p=1', ' Functional training and mobility specialist. Believe in the importance of moving well and staying injury-free. Let us improve our strength, flexibility, and overall performance!'),
-('Ryan','Davis', 'ryandavis@example.com', 'password6', 21, 10021, '5','male', true, 'https://img.freepik.com/premium-photo/profile-picture-well-built-athletic-female-runner-sportswear-training-isolated-along-gray-wall_171337-28948.jpg?w=2000', 'I love fitness and meeting new people I am inspiring to be a fitness trainer'),
-('Ashley','Barkley', 'ashleybarkley@example.com', 'password7', 40, 10023, '9','female', true, 'https://media.istockphoto.com/id/1069557694/photo/smiling-sporty-woman-jogging-alone-through-misty-forest-in-autumn.jpg?s=612x612&w=0&k=20&c=Mvxd3BumCk79y8GeESiL-R2iJvQq9kkIc_DIhOwjlYw=', 'I love running fitness and meeting new people I am inspiring to be a fitness trainer');
+('Ryan','Davis', 'ryandavis@example.com', 'password6', 21, 10021, '5','male', true, 'https://img.freepik.com/premium-photo/profile-picture-well-built-athletic-female-runner-sportswear-training-isolated-along-gray-wall_171337-28948.jpg?w=2000', 'I love fitness and meeting new people I am inspiring to be a fitness trainer');
 
 
 INSERT INTO groups (title, about, img, location) VALUES
@@ -20,7 +19,8 @@ INSERT INTO groups (title, about, img, location) VALUES
 ('Running Club', 'Join our running club and improve your fitness while enjoying the company of fellow runners!', 'https://mapmy.uastatic.com/75cda26295055317ff43b75a70675185.png', 'Staten Island'),
 ('Marathon Training Group', 'Get ready for your next marathon with our dedicated training group. Train together, achieve together!', 'https://static01.nyt.com/images/2017/10/17/science/11physed-marathon-photo/11physed-marathon-photo-superJumbo.jpg', 'Brooklyn'),
 ('Trail Running Enthusiasts', 'Explore natures beauty and challenge yourself with our trail running group. Discover new trails and make lasting memories!', 'https://cdn.5280.com/2021/08/Enchanted_Forest_Sarah_Banks.jpg', 'Queens'),
-('Beginners Running Group', 'Are you new to running? Join our beginners group and lets start your running journey together!', 'https://res.cloudinary.com/im2015/image/upload/w_1200,h_1200,c_fill,g_center//blog/running_cover_1.jpg','Bronz'),
+('Beginners Running Group', 'Are you new to running? Join our beginners group and lets start your running journey together!', 'https://res.cloudinary.com/im2015/image/upload/w_1200,h_1200,c_fill,g_center//blog/running_cover_1.jpg','Bronx'),
+(' High Vibrational Running Group', 'Are you looking for a peaceful run? Join our beginners group and lets start your running journey together!', 'https://res.cloudinary.com/im2015/image/upload/w_1200,h_1200,c_fill,g_center//blog/running_cover_1.jpg','Staten Island'),
 ('Social Running Crew', 'Join our fun and social running crew. We focus on enjoying the run and building friendships!', 'https://media.istockphoto.com/id/1153408424/photo/mature-and-senior-people-jogging-at-park.jpg?s=612x612&w=0&k=20&c=LDctDu331B5cyIG8yomVMPuafmo6Uv-3GHP8WHUAJAI=', 'Manhattan');
 
 
@@ -31,8 +31,8 @@ INSERT INTO profile_groups (profile_id,groups_id) VALUES
 (4,4),(4,3),(4,2),(4,1),
 (5,5),(5,4),(5,3),(5,2), (5,1),
 (6,6),(6,5),(6,4),(6,3),(6,2),(6,1),
-(7,7),(7,6),(7,5),(7,4),(7,3),(7,2),(7,1),
-(8,9), (8,8), (8,6), (8,5);
+(7,7),(7,6),(7,5),(7,4),(7,3),(7,2),(7,1),(7,10),(7,9), 
+(8,9),(8,8),(8,6),(8,5),(8,10),(8,7);
 
 
 INSERT INTO posts(post, date, author_id, groups_id) VALUES
@@ -57,5 +57,14 @@ INSERT INTO replies(reply, date, post_id, author_id) VALUES
 ('Jane, I can relate to the struggle of marathon training. It is tough, but the sense of accomplishment is worth it. Lets keep pushing and inspiring each other!','2023-05-25', 6,6),
 ('You are absolutely right, Ryan! I have been neglecting mobility. Lets share some tips on improving flexibility and staying injury-free.',' 2023-05-22', 8,8);
 
-
-
+INSERT INTO bulletin(title, message, author, date , author_id,groups, groups_id) VALUES
+('Early Moring Running', 'Hey everyone lets meet at 5am today!','Jane Doe', '2023-05-22', 1, 'Early Morning Run', 1),
+('Brooklyn Joggers', 'Brooklyn Group Meetings ', 'John Doe','2023-05-22', 2, 'First run at Brooklyn Bridge Park', 2),
+('Bronx Running Club', 'Running through out the Bronx ','Kelly Livingston' ,'2023-05-23', 3, 'Running for all levels', 3),
+('Joggers Circle', 'Jogging for you', 'Jane Smith','2023-05-23', 4, 'find a buddy and start jogging', 4),
+('Running Club', 'Jogging for you', 'Michael Johnson','2023-05-23', 5, 'find a buddy and start jogging', 5),
+('Marathon Training Group', 'Jogging for you', 'Emily Brown','2023-05-23', 6, 'find a buddy and start jogging', 6),
+('Trail Running Enthusiasts', 'Jogging for you', 'David Taylor','2023-05-23', 7, 'find a buddy and start jogging', 7),
+('Beginners Running Group', 'Jogging for you', 'Ryan Davis','2023-05-24', 8, 'find a buddy and start jogging', 8),
+('High Vibrational Running Group', 'Running for your virbration ', 'Ryan Davis','2023-05-24', 8, 'Running to help improve your aura and mental health', 9),
+('Social Running Crew', 'Pick a topic and start running', 'David Taylor', '2023-05-24', 7, 'find a buddy and talk about your favorite topic', 10);

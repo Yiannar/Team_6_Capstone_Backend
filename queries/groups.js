@@ -47,7 +47,7 @@ const updateGroup = async (id, groups) =>{
   let {title, about, img, location} = groups
     try {
         const updatedGroup = await db.one(
-            'UPDATE groups SET title=$1, about=$2, img=$3 location=$4 WHERE id=$5 RETURNING *',
+            'UPDATE groups SET title=$1, about=$2, img=$3, location=$4 WHERE id=$5 RETURNING *',
             [title, about, img, location, id ]
         )
         return updatedGroup

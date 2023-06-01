@@ -9,9 +9,9 @@ const getAllPosts = async () => {
   }
 };
 
-const getPost = async (id) => {
+const getPost = async (groups_id) => {
   try {
-    const post = await db.one('SELECT * FROM posts WHERE id=$1', id);
+    const post = await db.any('SELECT * FROM posts WHERE groups_id=$1', groups_id);
     return post;
   } catch (error) {
     return error;
