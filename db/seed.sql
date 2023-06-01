@@ -56,5 +56,10 @@ INSERT INTO replies(reply, date, post_id, author_id, groups_id) VALUES
 ('Jane, I can relate to the struggle of marathon training. It is tough, but the sense of accomplishment is worth it. Lets keep pushing and inspiring each other!','2023-05-25', 6,6,6),
 ('You are absolutely right, Ryan! I have been neglecting mobility. Lets share some tips on improving flexibility and staying injury-free.',' 2023-05-22', 8,8,8);
 
-
+INSERT INTO running_routes (title, description, distance,location) VALUES
+('Central Park Loop', 'Enjoy a scenic run through Central Park.', 3.5, 'Manhattan'),
+('Prospect Park Loop', 'Run amidst the beauty of Prospect Park.', 2.8, 'Brooklyn'),
+('Flushing Meadows Corona Park', 'Explore Flushing Meadows Corona Park while getting your run in.', 4.2, 'Queens'),
+('Van Cortlandt Park', 'Experience nature in Van Cortlandt Park.', 5.0,  'Bronx'),
+('South Beach Boardwalk', 'Enjoy a run along the beautiful South Beach Boardwalk.', 2.5,'StatenIsland');
 
