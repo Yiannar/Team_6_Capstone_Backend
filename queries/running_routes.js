@@ -50,8 +50,7 @@ const updateRunningRoute = async (id, runningRouteData) => {
   const { title, description, distance, location } = runningRouteData;
   try {
     const updatedRunningRoute = await db.one(
-      'UPDATE running_routes SET title = $1,description = $2 distance = $3, location = $4 WHERE id = $5 RETURNING *',
-      id,
+      'UPDATE running_routes SET title = $1,description = $2, distance = $3, location = $4 WHERE id = $5 RETURNING *',
       [title, description, distance, location, id]
     );
     return updatedRunningRoute;
