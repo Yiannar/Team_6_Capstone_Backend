@@ -1,8 +1,8 @@
 const db = require('../db/dbConfig');
 
-const getAllPosts = async (groups_id) => {
+const getAllPosts = async () => {
   try {
-    const allPosts = await db.any('SELECT * FROM posts WHERE groups_id=$1', groups_id);
+    const allPosts = await db.any('SELECT * FROM posts');
     return allPosts;
   } catch (error) {
     return error;
@@ -22,7 +22,7 @@ const createPost = async (singlePost) => {
   let { post, date, author_id, groups_id } = singlePost;
   try {
     const newPost = await db.one(
-      'INSERT INTO posts(post,date, author_id, groups_id) VALUES ($1, $2, $3, $4) RETURNING *',
+      'INSERT INTO posts(post, date, author_id, groups_id) VALUES ($1, $2, $3, $4) RETURNING *',
       [post, date, author_id, groups_id]
     );
     return newPost;

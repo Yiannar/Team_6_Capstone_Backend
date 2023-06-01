@@ -1,8 +1,8 @@
 const express = require('express');
 const posts = express.Router({ mergeParams: true})
-const {getAllPosts,getPost,createPost,deletePost,updatePost} = require('../queries/posts')
+const {getAllPosts, getPost, createPost, deletePost, updatePost} = require('../queries/posts')
 
-// Index route
+// // Index route
 // posts.get('/', async (req, res) => {
 //   const allPosts = await getAllPosts();
 //   if (allPosts[0]) {
@@ -13,9 +13,8 @@ const {getAllPosts,getPost,createPost,deletePost,updatePost} = require('../queri
 // });
 
 posts.get('/', async (req, res) => {
-  const { groups_id } = req.params
 
-  const allPosts = await getAllPosts(groups_id)
+  const allPosts = await getAllPosts()
   if (allPosts[0]) {
     res.status(200).json(allPosts)
   } else {
@@ -32,10 +31,11 @@ posts.get('/:id', async (req, res) => {
   if (post[0]) {
     res.status(200).json(post);
   } else {
-    res.status(400).json({ error: ' Post Not found' });
+    res.status(400).json({ error: 'Post Not found' });
   }
   
 });
+
 //CREATE
 posts.post('/', async (req, res) => {
   try {

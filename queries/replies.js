@@ -23,7 +23,7 @@ const createReplies = async (replies) =>{
     try{
         const newReplies = await db.one(
             'INSERT INTO replies(reply,date, post_id, author_id) VALUES ($1, $2, $3, $4) RETURNING *',
-            [reply,date, post_id, author_id]
+            [reply, date, post_id, author_id]
         ) 
         return newReplies
     } catch(error){
