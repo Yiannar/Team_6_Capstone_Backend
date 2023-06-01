@@ -18,7 +18,7 @@ const getAllGroupsSingleUser = async (profile_id) => {
     //   profile_id
     // );
     const singleUserGroups = await db.any(
-      'SELECT groups.* FROM groups JOIN profile_groups ON groups.id = profile_groups.groups_id WHERE profile_groups.profile_id = $1',
+      'SELECT groups.* FROM groups JOIN profile_groups ON groups.id = profile_groups.groups_id JOIN profile ON profile_groups.profile_id = profile.id WHERE profile.id=$1',
       profile_id
     );
     console.log('Hello There');

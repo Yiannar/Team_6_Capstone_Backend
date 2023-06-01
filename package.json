@@ -22,8 +22,8 @@
   },
   "scripts": {
     "start": "node server.js",
-    "db:init": "psql -f db/schema.sql team_6_capstone_backend",
-    "db:seed": "psql -f db/seed.sql team_6_capstone_backend",
+    "db:init": "psql -f db/schema.sql",
+    "db:seed": "psql -f db/seed.sql",
     "dev": "nodemon server.js"
   },
   "name": "team_6_capstone_backend",

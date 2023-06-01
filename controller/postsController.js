@@ -1,16 +1,27 @@
 const express = require('express');
-const posts = express.Router()
+const posts = express.Router({ mergeParams: true})
 const {getAllPosts,getPost,createPost,deletePost,updatePost} = require('../queries/posts')
 
 // Index route
+// posts.get('/', async (req, res) => {
+//   const allPosts = await getAllPosts();
+//   if (allPosts[0]) {
+//     res.status(200).json(allPosts);
+//   } else {
+//     res.status(500).json({ error: 'Unable to get all posts' });
+//   }
+// });
+
 posts.get('/', async (req, res) => {
-  const allPosts = await getAllPosts();
+  const { groups_id } = req.params
+
+  const allPosts = await getAllPosts(groups_id)
   if (allPosts[0]) {
-    res.status(200).json(allPosts);
+    res.status(200).json(allPosts)
   } else {
-    res.status(500).json({ error: 'Unable to get all posts' });
+    res.status(500).json({ error: 'Internal Server Error'})
   }
-});
+})
 
 // Show Route
 
@@ -18,11 +29,12 @@ posts.get('/:id', async (req, res) => {
   const { id } = req.params;
   const post = await getPost(id);
   console.log('post', post);
-  if (!post.message) {
+  if (post[0]) {
     res.status(200).json(post);
   } else {
     res.status(400).json({ error: ' Post Not found' });
   }
+  
 });
 //CREATE
 posts.post('/', async (req, res) => {
