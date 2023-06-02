@@ -25,8 +25,10 @@ app.use('/posts', postsController);
 app.use('/reply', repliesController);
 app.use('/groups', groupsController);
 app.use('/usergroups', userGroupsController);
-// app.use('/bulletin', bulletinController);
+app.use('/bulletin', bulletinController);
 app.use('/runningroutes', runningRoutesController);
+
+
 // ROUTES
 app.get('/', (req, res) => {
   res.send('Welcome to Kyrun App');
