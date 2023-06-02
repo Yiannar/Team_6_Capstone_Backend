@@ -14,7 +14,7 @@ const getAllBulletin = async (id) => {
 
 const getBulletin = async (id) => {
   try {
-    const bulletin = await db.one(
+    const bulletin = await db.any(
       'SELECT * FROM bulletin WHERE id =$1',
      id
     );
