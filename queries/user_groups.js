@@ -28,22 +28,45 @@ const getAllGroupsSingleUser = async (profile_id) => {
   }
 };
 
-const joinAGroup = async (profile_id, group_id) => {
+const getSingleUserGroup = async (profile_id, groups_id) => {
+  try {
+    const singleUserGroup = await db.oneOrNone(
+      'SELECT * FROM groups JOIN profile_groups ON groups.id = profile_groups.groups_id WHERE profile_groups.profile_id = $1 AND profile_groups.groups_id = $2',
+      [profile_id, groups_id]
+    );
+    console.log('Hello There');
+    return singleUserGroup;
+  } catch (error) {
+    return error;
+  }
+};
+
+
+
+
+
+
+const joinAGroup = async (profile_id, groups_id) => {
   try {
     const groupJoined = await db.one(
-      'INSERT INTO profile_groups(profile_id, group_id) VALUES ($1, $2) RETURNING *',
-      [profile_id, group_id]
+      'INSERT INTO profile_groups(profile_id, groups_id) VALUES ($1, $2) RETURNING *',
+      [profile_id, groups_id]
     );
     return groupJoined;
   } catch (error) {
     return error;
   }
 };
-const leaveAGroup = async (profile_id, group_id) => {
+
+
+// {need to work on the leave group, everything else works}
+
+const leaveAGroup = async (profile_id, groups_id) => {
   try {
+
     const leftGroup = await db.one(
-      'DELETE FROM profile_groups WHERE profile_id = $1 AND group_id=$2 RETURNING *',
-      [profile_id, group_id]
+      'DELETE FROM profile_groups WHERE profile_id = $1 AND groups_id=$2 RETURNING *',
+      [profile_id, groups_id]
     );
     return leftGroup;
   } catch (error) {
@@ -54,6 +77,7 @@ const leaveAGroup = async (profile_id, group_id) => {
 module.exports = {
   getAllUserGroups,
   getAllGroupsSingleUser,
+  getSingleUserGroup,
   joinAGroup,
   leaveAGroup,
 };
