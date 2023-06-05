@@ -6,7 +6,8 @@ const postsController = require('./controller/postsController');
 const repliesController = require('./controller/repliesController');
 const groupsController = require('./controller/groupsController');
 const userGroupsController = require('./controller/userGroupsController');
-//const bulletinController = require('./controller/bulletinController');
+const bulletinController = require('./controller/bulletinController');
+const runningRoutesController = require('./controller/runningRoutesController');
 
 const morgan = require('morgan');
 
@@ -24,10 +25,9 @@ app.use('/posts', postsController);
 app.use('/reply', repliesController);
 app.use('/groups', groupsController);
 app.use('/usergroups', userGroupsController);
+app.use('/bulletin', bulletinController);
+app.use('/runningroutes', runningRoutesController);
 
-
-// BULLETIN ROUTES
-//app.use('/groups/bulletin', bulletinController);
 
 // ROUTES
 app.get('/', (req, res) => {
