@@ -16,7 +16,8 @@ CREATE TABLE profile (
   pace TEXT,
   gender TEXT,
   verified BOOLEAN DEFAULT false,
-  img TEXT DEFAULT 'image not found'
+  img TEXT DEFAULT 'image not found',
+  bio TEXT
   -- groups_id INTEGER REFERENCES groups (id)
 );
 
@@ -26,14 +27,16 @@ CREATE TABLE groups (
    id SERIAL PRIMARY KEY,
    title TEXT NOT NULL,
    about TEXT,
-   img TEXT NOT NULL
+   img TEXT NOT NULL,
+   location TEXT
 );
+
 DROP TABLE IF EXISTS profile_groups;
 
 CREATE TABLE profile_groups(
   profile_id INTEGER REFERENCES profile(id) ON DELETE CASCADE,
   groups_id INTEGER REFERENCES groups(id) ON DELETE CASCADE,
-  PRIMARY KEY (profile_id,groups_id)
+  PRIMARY KEY (profile_id, groups_id)
 );
 
 DROP TABLE IF EXISTS posts;
@@ -42,8 +45,8 @@ CREATE TABLE posts(
     id SERIAL PRIMARY KEY,
     post TEXT,
     date TEXT NOT NULL,
-    author_id INTEGER REFERENCES profile(id),
-   groups_id INTEGER REFERENCES groups(id)
+    author_id INTEGER REFERENCES profile (id),
+    groups_id INTEGER REFERENCES groups (id)
 );
 
 DROP TABLE IF EXISTS replies;
@@ -52,20 +55,30 @@ CREATE TABLE replies(
     id SERIAL PRIMARY KEY,
     reply TEXT,
     date TEXT NOT NULL,
-    post_id INTEGER REFERENCES posts(id),
-    author_id INTEGER REFERENCES profile(id)
+    post_id INTEGER REFERENCES posts (id),
+    author_id INTEGER REFERENCES profile (id),
+    groups_id INTEGER REFERENCES groups (id)
 );
 
--- 
--- DROP TABLE IF EXISTS bulletin;
 
--- CREATE TABLE bulletin (
---   id SERIAL PRIMARY KEY,
---   title VARCHAR(255) NOT NULL,
---   message TEXT NOT NULL,
---   author TEXT NOT NULL,
---   date TEXT NOT NULL
---   author_id TEXT REFERENCES profile (id)
---   groups TEXT NOT NULL,
---   groups_id INTEGER REFERENCES groups(id)
--- )
+DROP TABLE IF EXISTS bulletin;
+
+CREATE TABLE bulletin (
+  id SERIAL PRIMARY KEY,
+  title VARCHAR(255) NOT NULL,
+  message TEXT NOT NULL,
+  author TEXT NOT NULL,
+  date TEXT NOT NULL,
+  author_id  INTEGER REFERENCES profile (id),
+  groups TEXT NOT NULL,
+  groups_id INTEGER REFERENCES groups(id)
+);
+
+DROP TABLE IF EXISTS running_routes;
+CREATE TABLE running_routes (
+    id SERIAL PRIMARY KEY,
+    title TEXT NOT NULL, 
+    description TEXT NOT NULL,
+    distance DECIMAL (10,2),
+    location VARCHAR (250)
+);

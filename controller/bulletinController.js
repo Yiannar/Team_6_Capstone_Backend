@@ -1,21 +1,33 @@
 const express = require('express');
 const bulletin = express.Router();
 const {
+  getAllBulletin,
   getBulletin,
   createBulletin,
   deleteBulletin,
   updateBulletin,
 } = require('../queries/bulletin');
 
+
+bulletin.get('/', async (req, res) => {
+  const AllBulletin = await getAllBulletin();
+  if (AllBulletin[0]) {
+    res.status(200).json(AllBulletin);
+  } else {
+    res.status(500).json({ error: 'Unable to get all bulletin posts' });
+  }
+});
+
+
 // get bulletin
-bulletin.get('/groups/:id', async (req, res) => {
+bulletin.get('/:profile_id', async (req, res) => {
   const { id } = req.params;
   const bulletin = await getBulletin(id);
   console.log('bulletin', bulletin);
   if (!bulletin.message) {
     res.status(200).json(bulletin);
   } else {
-    res.status(400).json({ error: ' bulletin Not found' });
+    res.status(400).json({ error: ' Bulletin Not found' });
   }
 });
 
