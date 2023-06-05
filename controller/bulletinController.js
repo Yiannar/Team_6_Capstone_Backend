@@ -20,7 +20,7 @@ bulletin.get('/', async (req, res) => {
 
 
 // get bulletin
-bulletin.get('/:id', async (req, res) => {
+bulletin.get('/:profile_id', async (req, res) => {
   const { id } = req.params;
   const bulletin = await getBulletin(id);
   console.log('bulletin', bulletin);

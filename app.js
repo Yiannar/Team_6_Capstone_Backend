@@ -6,7 +6,7 @@ const postsController = require('./controller/postsController');
 const repliesController = require('./controller/repliesController');
 const groupsController = require('./controller/groupsController');
 const userGroupsController = require('./controller/userGroupsController');
- const bulletinController = require('./controller/bulletinController');
+const bulletinController = require('./controller/bulletinController');
 const runningRoutesController = require('./controller/runningRoutesController');
 
 const morgan = require('morgan');

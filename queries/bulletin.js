@@ -12,9 +12,9 @@ const getAllBulletin = async (id) => {
 };
 
 
-const getBulletin = async (id) => {
+const getBulletin = async (profile_id, group_id) => {
   try {
-    const bulletin = await db.any(
+    const bulletin = await db.one(
       'SELECT * FROM bulletin WHERE id =$1',
      id
     );
