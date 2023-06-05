@@ -12,11 +12,6 @@ const getAllUserGroups = async () => {
 
 const getAllGroupsSingleUser = async (profile_id) => {
   try {
-    // const singleUserGroups = db.any('SELECT * FROM profile WHERE profile_id = $1', profile_id);
-    // const singleGroups = await db.any(
-    //   'SELECT groups.id, groups.title, groups.about FROM groups JOIN profile_groups ON groups.id = profile_groups.group_id JOIN profile ON profile_groups.profile_id = profile.id WHERE profile.id = $1',
-    //   profile_id
-    // );
     const singleUserGroups = await db.any(
       'SELECT groups.* FROM groups JOIN profile_groups ON groups.id = profile_groups.groups_id JOIN profile ON profile_groups.profile_id = profile.id WHERE profile.id=$1',
       profile_id
@@ -27,6 +22,21 @@ const getAllGroupsSingleUser = async (profile_id) => {
     return error;
   }
 };
+
+
+const getAllGroups = async (groups_id) => {
+  try {
+    const singleUserGroups = await db.any(
+      'SELECT profile.* FROM profile JOIN profile_groups ON profile.id = profile_groups.profile_id JOIN groups ON profile_groups.groups_id = groups.id WHERE groups.id = $1',
+      groups_id
+    );
+    console.log('Hello There');
+    return singleUserGroups;
+  } catch (error) {
+    return error;
+  }
+};
+
 
 
 const countGroupMembers = async (groups_id) => {
@@ -92,6 +102,7 @@ const leaveAGroup = async (profile_id, groups_id) => {
 module.exports = {
   getAllUserGroups,
   getAllGroupsSingleUser,
+  getAllGroups,
   countGroupMembers,
   getSingleUserGroup,
   joinAGroup,
