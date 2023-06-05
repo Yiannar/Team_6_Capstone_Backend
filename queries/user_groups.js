@@ -28,6 +28,21 @@ const getAllGroupsSingleUser = async (profile_id) => {
   }
 };
 
+
+const countGroupMembers = async (groups_id) => {
+  try {
+    const count = await db.one(
+      'SELECT COUNT(*) FROM profile_groups WHERE groups_id = $1',
+      [groups_id]
+    );
+    console.log('Hello There');
+    return count.count;
+  } catch (error) {
+    return error;
+  }
+};
+
+
 const getSingleUserGroup = async (profile_id, groups_id) => {
   try {
     const singleUserGroup = await db.oneOrNone(
@@ -77,6 +92,7 @@ const leaveAGroup = async (profile_id, groups_id) => {
 module.exports = {
   getAllUserGroups,
   getAllGroupsSingleUser,
+  countGroupMembers,
   getSingleUserGroup,
   joinAGroup,
   leaveAGroup,

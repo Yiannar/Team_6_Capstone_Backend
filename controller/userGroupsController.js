@@ -3,6 +3,7 @@ const usersGroups = express.Router();
 const {
   getAllUserGroups,
   getAllGroupsSingleUser,
+  countGroupMembers,
   getSingleUserGroup,
   joinAGroup,
   leaveAGroup,
@@ -31,6 +32,17 @@ usersGroups.get('/:profile_id', async (req, res) => {
   }
 });
 
+// count to see how many users are in a group
+usersGroups.get('/:groups_id/profiles/count', async (req, res) => {
+  const { groups_id} = req.params;
+  const group = await countGroupMembers(groups_id);
+  console.log('group', group);
+  if (!group.message) {
+    res.status(200).json(group);
+  } else {
+    res.status(400).json({ error: ' group Not found' });
+  }
+});
 
 
 // this gets all the group the user belongs to at that particular id
@@ -51,7 +63,7 @@ usersGroups.get('/:profile_id/:groups_id', async (req, res) => {
 
 
 
-// This works now
+// This works now 
 usersGroups.post('/:profile_id/:groups_id', async (req, res) => {
   const { profile_id, groups_id } = req.params;
   try {
