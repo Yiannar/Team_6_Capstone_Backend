@@ -79,7 +79,7 @@ usersGroups.get('/:profile_id/:groups_id', async (req, res) => {
 
 
 
-// This works now 
+// This works now to join 
 usersGroups.post('/:profile_id/:groups_id', async (req, res) => {
   const { profile_id, groups_id } = req.params;
   try {
@@ -91,10 +91,10 @@ usersGroups.post('/:profile_id/:groups_id', async (req, res) => {
 });
 
 // This should allow the user to leave a group at that profileID,groupID hopefully but needs work
-usersGroups.delete('/:profile_id/:group_id', async (req, res) => {
+usersGroups.delete('/:profile_id/:groups_id', async (req, res) => {
   try {
-    const { profileID, groupID } = req.params;
-    const leaveGroup = await leaveAGroup(profileID, groupID);
+    const { profile_id, groups_id } = req.params;
+    const leaveGroup = await leaveAGroup(profile_id, groups_id);
     res.status(200).json(leaveGroup);
   } catch (error) {
     res.status(500).json({ error: 'invalid request' });
