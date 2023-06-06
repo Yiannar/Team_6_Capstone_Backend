@@ -1,21 +1,18 @@
 const db = require('../db/dbConfig');
 
 const getAllBulletin = async (id) => {
-  // console.log(db);
   try {
     const bulletin = await db.any(
-      'SELECT * FROM bulletin WHERE id =$1',
-     id
+      'SELECT * FROM bulletin'
     );
-    return getAllbulletin;
+    return bulletin;
   } catch (error) {
     return error;
   }
 };
 
 
-const getBulletin = async (id) => {
-  // console.log(db);
+const getBulletin = async (profile_id, group_id) => {
   try {
     const bulletin = await db.one(
       'SELECT * FROM bulletin WHERE id =$1',

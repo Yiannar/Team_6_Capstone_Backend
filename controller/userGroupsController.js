@@ -22,9 +22,9 @@ usersGroups.get('/', async (req, res) => {
   }
 });
 
-// get groups based on profile_id
-usersGroups.get('/:profile_id', async (req, res) => {
-  const { profile_id} = req.params;
+// this gets all the group the user belongs to at that particular id
+usersGroups.get('/:profile_id/', async (req, res) => {
+  const { profile_id } = req.params;
   const group = await getAllGroupsSingleUser(profile_id);
   console.log('group', group);
   if (!group.message) {

@@ -74,19 +74,15 @@ const getSingleUserGroup = async (profile_id, groups_id) => {
 const joinAGroup = async (profile_id, groups_id) => {
   try {
     const groupJoined = await db.one(
-      'INSERT INTO profile_groups(profile_id, groups_id) VALUES ($1, $2) RETURNING *',
-      [profile_id, groups_id]
+      'INSERT INTO profile_groups(profile_id, group_id) VALUES ($1, $2) RETURNING *',
+      [profile_id, group_id]
     );
     return groupJoined;
   } catch (error) {
     return error;
   }
 };
-
-
-// {need to work on the leave group, everything else works}
-
-const leaveAGroup = async (profile_id, groups_id) => {
+const leaveAGroup = async (profile_id, group_id) => {
   try {
 
     const leftGroup = await db.one(

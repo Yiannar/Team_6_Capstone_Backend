@@ -73,3 +73,12 @@ CREATE TABLE bulletin (
   groups TEXT NOT NULL,
   groups_id INTEGER REFERENCES groups(id)
 );
+
+DROP TABLE IF EXISTS running_routes;
+CREATE TABLE running_routes (
+    id SERIAL PRIMARY KEY,
+    title TEXT NOT NULL, 
+    description TEXT NOT NULL,
+    distance DECIMAL (10,2),
+    location VARCHAR (250)
+);
