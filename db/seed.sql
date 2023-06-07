@@ -24,6 +24,7 @@ INSERT INTO groups (title, about, img, location) VALUES
 ('Social Running Crew', 'Join our fun and social running crew. We focus on enjoying the run and building friendships!', 'https://media.istockphoto.com/id/1153408424/photo/mature-and-senior-people-jogging-at-park.jpg?s=612x612&w=0&k=20&c=LDctDu331B5cyIG8yomVMPuafmo6Uv-3GHP8WHUAJAI=', 'Manhattan');
 
 
+
 INSERT INTO profile_groups (profile_id,groups_id) VALUES
 (1,1),(1,3),(1,2),
 (2,2),(2,3),(2,1),
