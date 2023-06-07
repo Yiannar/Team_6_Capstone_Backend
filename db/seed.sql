@@ -70,7 +70,7 @@ INSERT INTO bulletin(title, message, author, date , author_id,groups, groups_id)
 ('High Vibrational Running Group', 'Running for your virbration ', 'Ryan Davis','2023-05-24', 8, 'Running to help improve your aura and mental health', 9),
 ('Social Running Crew', 'Pick a topic and start running', 'David Taylor', '2023-05-24', 7, 'find a buddy and talk about your favorite topic', 10);
 
-NSERT INTO running_routes (title, description, distance,location) VALUES
+INSERT INTO running_routes (title, description, distance,location) VALUES
 ('Central Park Loop', 'Enjoy a scenic run through Central Park.', 3.5, 'Manhattan'),
 ('Prospect Park Loop', 'Run amidst the beauty of Prospect Park.', 2.8, 'Brooklyn'),
 ('Flushing Meadows Corona Park', 'Explore Flushing Meadows Corona Park while getting your run in.', 4.2, 'Queens'),
