@@ -20,12 +20,21 @@ bulletin.get('/', async (req, res) => {
 
 
 // get bulletin
+<<<<<<< HEAD
+bulletin.get('/:id', async (req, res) => {
+  const { id } = req.params;
+  const bulletin = await getBulletin(id);
+  console.log('bulletin', bulletin);
+  if (!bulletin.message) {
+    res.status(200).json(bulletin);
+=======
 
 bulletin.get('/:id', async (req, res) => { const { id } = req.params;
   const foundBulletin = await getBulletin(id);
   console.log('bulletin', foundBulletin);
   if (!foundBulletin.message) {
     res.status(200).json(foundBulletin);
+>>>>>>> 1194828501393cf6a000acb8488d708d6a366741
   } else {
     res.status(400).json({ error: 'Bulletin Not found' });
   }

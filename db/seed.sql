@@ -75,5 +75,20 @@ INSERT INTO running_routes (title, description, distance,location) VALUES
 ('Prospect Park Loop', 'Run amidst the beauty of Prospect Park.', 2.8, 'Brooklyn'),
 ('Flushing Meadows Corona Park', 'Explore Flushing Meadows Corona Park while getting your run in.', 4.2, 'Queens'),
 ('Van Cortlandt Park', 'Experience nature in Van Cortlandt Park.', 5.0,  'Bronx'),
-('South Beach Boardwalk', 'Enjoy a run along the beautiful South Beach Boardwalk.', 2.5,'StatenIsland');
+('South Beach Boardwalk', 'Enjoy a run along the beautiful South Beach Boardwalk.', 2.5,'StatenIsland'),
+('Pelham Bay Park', 'Pelham Bay Park is the largest park in New York City, located in the Bronx. It offers an extensive trail system with diverse terrain, including woodlands, salt marshes, and waterfront views. With its vast size, runners can explore various routes and enjoy a tranquil escape from the city.', 13.6, 'Bronx, NY'),
+('Forest Park', 'Forest Park is a scenic park located in Queens, spanning over 500 acres. It features winding trails, peaceful forests, and beautiful natural landscapes. Runners can choose from a range of paths, including the popular 2.5-mile Forest Park Carousel Loop, for an enjoyable running experience.', 2.5, 'Queens, NY'),
+('Riverside Park', 'Riverside Park is a scenic waterfront park located on the Upper West Side of Manhattan. It offers a picturesque running path along the Hudson River, with beautiful views of the water and the Manhattan skyline. Runners can enjoy a peaceful and rejuvenating experience while covering a distance of 4 miles.', 4.0, 'Manhattan, NY'),
+('Cunningham Park', 'Cunningham Park is a diverse park located in Queens, offering a variety of recreational activities. Runners can explore its extensive trail network, which winds through forests and open fields. The park also features a dedicated cross-country trail, making it a favorite spot for running enthusiasts.', 5.2, 'Queens, NY');
 
+
+INSERT INTO ratings (rating_id, route_name, profile_id, rating_value, location)
+VALUES
+  (1, 'Route A', 1, 4.5, 'Central Park Loop'),
+  (2, 'Route B', 2, 3.2, 'Prospect Park Loop'),
+  (3, 'Route C', 3, 4.7, 'Flushing Meadows Corona Park'),
+  (4, 'Route D', 4, 2.9, 'Van Cortlandt Park'),
+  (5, 'Route E', 5, 4.1, 'South Beach Boardwalk'),
+  (6, 'Route F', 6, 3.8, 'Forest Park'),
+  (7, 'Route G', 7, 4.2, 'Riverside Park'),
+  (8, 'Route H', 8, 4.6, 'Cunningham Park');
