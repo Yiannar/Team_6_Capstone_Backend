@@ -14,12 +14,10 @@ const getAllBulletin = async (id) => {
 };
 
 
-const getBulletin = async (id) => {
-  // console.log(db);
+const getBulletin = async (group_id) => {
   try {
-    const bulletin = await db.one(
-      'SELECT * FROM bulletin WHERE id =$1',
-     id
+    const bulletin = await db.any(
+      'SELECT * FROM bulletin WHERE groups_id=$1', group_id
     );
     return bulletin;
   } catch (error) {
