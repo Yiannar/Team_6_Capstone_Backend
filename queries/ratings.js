@@ -23,7 +23,7 @@ const getRating = async (rating_id) => {
 };
 
 const createRating = async (rating_id) => {
-  let { rating_id, route_name, profile_id, rating_value, location } = rating;
+  // let { rating_id, route_name, profile_id, rating_value, location } = rating;
   try {
     const newRating = await db.one(
       'INSERT INTO ratings (rating_id, route_name, profile_id, rating_value, location) VALUES ($1, $2, $3, $4, $5) RETURNING *',
@@ -48,7 +48,7 @@ const deleteRating = async (rating_id) => {
 };
 
 const updateRating = async (rating_id, rating) => {
-  let { rating_id, route_name, profile_id, rating_value, location } = rating;
+  // let { rating_id, route_name, profile_id, rating_value, location } = rating;
 
   try {
     const updatedRating = await db.one(
