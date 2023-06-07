@@ -1,7 +1,7 @@
 const db = require('../db/dbConfig');
 
 const getAllUserGroups = async () => {
-  console.log(db);
+  //console.log(db);
   try {
     const allUsers = await db.any('SELECT * FROM profile_groups');
     return allUsers;
