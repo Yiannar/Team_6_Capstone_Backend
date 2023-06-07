@@ -8,6 +8,7 @@ const groupsController = require('./controller/groupsController');
 const userGroupsController = require('./controller/userGroupsController');
 const bulletinController = require('./controller/bulletinController');
 const runningRoutesController = require('./controller/runningRoutesController');
+const ratingsController = require('./controller/ratingsController');
 
 const morgan = require('morgan');
 
@@ -27,7 +28,7 @@ app.use('/groups', groupsController);
 app.use('/usergroups', userGroupsController);
 app.use('/bulletin', bulletinController);
 app.use('/runningroutes', runningRoutesController);
-
+app.use('/ratings', ratingsController);
 
 // ROUTES
 app.get('/', (req, res) => {
