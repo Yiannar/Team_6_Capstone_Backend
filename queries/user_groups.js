@@ -82,6 +82,7 @@ const joinAGroup = async (profile_id, groups_id) => {
     return error;
   }
 };
+
 const leaveAGroup = async (profile_id, groups_id) => {
   try {
 

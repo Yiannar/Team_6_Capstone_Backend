@@ -34,17 +34,20 @@ usersGroups.get('/:profile_id/', async (req, res) => {
   }
 });
 
-// gets all profiles that belong to a groups_id
-usersGroups.get('/groups/:groups_id', async (req, res) => {
-  const { groups_id} = req.params;
-  const group = await getAllGroups(groups_id);
-  console.log('group', group);
-  if (!group.message) {
-    res.status(200).json(group);
-  } else {
-    res.status(400).json({ error: ' group Not found' });
-  }
-});
+// // This should allow the user to join a group at that groupID hopefully
+// usersGroups.post('/', async (req, res) => {
+// =======
+// // gets all profiles that belong to a groups_id
+// usersGroups.get('/groups/:groups_id', async (req, res) => {
+//   const { groups_id} = req.params;
+//   const group = await getAllGroups(groups_id);
+//   console.log('group', group);
+//   if (!group.message) {
+//     res.status(200).json(group);
+//   } else {
+//     res.status(400).json({ error: ' group Not found' });
+//   }
+// });
 
 
 
