@@ -13,8 +13,9 @@ const {getAllPosts, getPost, createPost, deletePost, updatePost} = require('../q
 // });
 
 posts.get('/', async (req, res) => {
+  const { groups_id } = req.params;
 
-  const allPosts = await getAllPosts()
+  const allPosts = await getAllPosts(groups_id)
   if (allPosts[0]) {
     res.status(200).json(allPosts)
   } else {
