@@ -82,3 +82,12 @@ CREATE TABLE running_routes (
     distance DECIMAL (10,2),
     location VARCHAR (250)
 );
+
+CREATE TABLE ratings(
+  rating_id SERIAL PRIMARY KEY,
+  route_name VARCHAR(255) NOT NULL,
+  profile_id INT NOT NULL,
+  rating_value INT NOT NULL,
+  location VARCHAR(50) NOT NULL,
+  FOREIGN KEY (profile_id) REFERENCES profile (id)
+);

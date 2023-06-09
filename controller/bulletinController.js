@@ -20,16 +20,26 @@ bulletin.get('/', async (req, res) => {
 
 
 // get bulletin
-bulletin.get('/:profile_id', async (req, res) => {
-  const { id } = req.params;
-  const bulletin = await getBulletin(id);
-  console.log('bulletin', bulletin);
-  if (!bulletin.message) {
-    res.status(200).json(bulletin);
+
+bulletin.get('/:id', async (req, res) => { const { id } = req.params;
+  const foundBulletin = await getBulletin(id);
+  console.log('bulletin', foundBulletin);
+  if (!foundBulletin.message) {
+    res.status(200).json(foundBulletin);
   } else {
-    res.status(400).json({ error: ' Bulletin Not found' });
+    res.status(400).json({ error: 'Bulletin Not found' });
   }
-});
+});     
+// bulletin.get('/:id', async (req, res) => {
+//   const { id } = req.params;
+//   const bulletin = await getBulletin(id);
+//   console.log('bulletin', bulletin);
+//   if (!bulletin.message) {
+//     res.status(200).json(bulletin);
+//   } else {
+//     res.status(400).json({ error: ' Bulletin Not found' });
+//   }
+// });
 
 // create
 bulletin.post('/', async (req, res) => {
