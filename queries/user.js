@@ -20,6 +20,35 @@ const getUser = async (id) => {
   }
 };
 
+//login 
+const loginUser = async(profile)=>{
+  let {
+    email,
+    password,
+  } = profile
+
+  try {
+    const user = await db.one('SELECT * FROM profile WHERE email=$1 AND password=$2', [email, password])
+    const confidential = {
+      email:user.email, 
+      first_name:user.first_name, 
+      last_name:user.last_name,
+      age:user.age,
+      zipCode:user.zipCode,
+      gender:user.gender,
+      pace: user.pace,
+      id: user.id,
+    }
+    return confidential 
+  } catch (error) {
+    return error
+  }
+}
+
+
+
+
+//register 
 const createUser = async (profile) => {
   let {
     first_name,
@@ -31,7 +60,7 @@ const createUser = async (profile) => {
     pace,
     gender,
     verified,
-    img,
+    img
     // groups_id,
   } = profile;
   try {
@@ -107,4 +136,4 @@ const updateUser = async (id, profile) => {
   }
 };
 
-module.exports = { getAllUsers, getUser, createUser, deleteUser, updateUser };
+module.exports = { getAllUsers, getUser, createUser, deleteUser, updateUser, loginUser };

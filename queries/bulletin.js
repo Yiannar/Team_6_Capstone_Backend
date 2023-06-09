@@ -1,11 +1,21 @@
 const db = require('../db/dbConfig');
 
-const getBulletin = async (bulletin_id) => {
-  console.log(db);
+const getAllBulletin = async (id) => {
   try {
-    const bulletin = await db.oneOrNone(
-      'SELECT * FROM groups WHERE bulletin_id =$1',
-      bulletin_id
+    const bulletin = await db.any(
+      'SELECT * FROM bulletin'
+    );
+    return bulletin;
+  } catch (error) {
+    return error;
+  }
+};
+
+
+const getBulletin = async (group_id) => {
+  try {
+    const bulletin = await db.any(
+      'SELECT * FROM bulletin WHERE groups_id=$1', group_id
     );
     return bulletin;
   } catch (error) {
@@ -14,22 +24,22 @@ const getBulletin = async (bulletin_id) => {
 };
 
 const createBulletin = async (bulletin) => {
-  let { bulletin_id, title, message, author, date } = bulletin;
+  let { title, message, author, date, author_id, groups, groups_id } = bulletin;
   try {
     const newBulletin = await db.one(
-      'INSERT INTO groups (bulletin_id,title,message,author,group) VALUES ($1, $2, $3, $4, $5) RETURNING *',
-      [bulletin_id, title, message, author, date]
+      'INSERT INTO bulletin (title, message, author, date, author_id, groups, groups_id) VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *',
+      [ title, message, author, date, author_id, groups, groups_id]
     );
     return newBulletin;
   } catch (error) {
     return error;
   }
 };
-const deleteBulletin = async (bulletin_id) => {
+const deleteBulletin = async (id) => {
   try {
     const deletedBulletin = await db.one(
-      'DELETE FROM groups WHERE bulletin_id = $1 RETURNING *',
-      bulletin_id
+      'DELETE FROM bulletin WHERE id = $1 RETURNING *',
+      id
     );
     return deletedBulletin;
   } catch (error) {
@@ -37,12 +47,12 @@ const deleteBulletin = async (bulletin_id) => {
   }
 };
 
-const updateBulletin = async (bulletin_id, bulletin) => {
-  let { title, message, author, date } = bulletin;
+const updateBulletin = async (id, bulletin) => {
+  let { title, message, author, date, author_id, groups, groups_id } = bulletin;
   try {
     const updatedBulletin = await db.one(
-      'UPDATE bulletin SET title=$1,message=$2,author=$3,date=$4 WHERE bulletin_id=$5 RETURNING *',
-      [title, message, author, date, bulletin_id]
+      'UPDATE bulletin SET title=$1,message=$2,author=$3,date=$4, author_id=$5, groups=$6, groups_id=$7 WHERE id=$8 RETURNING *',
+      [title, message, author, date, author_id, groups, groups_id, id]
     );
     return updatedBulletin;
   } catch (error) {
@@ -51,6 +61,7 @@ const updateBulletin = async (bulletin_id, bulletin) => {
 };
 
 module.exports = {
+  getAllBulletin,
   getBulletin,
   createBulletin,
   deleteBulletin,

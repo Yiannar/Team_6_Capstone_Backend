@@ -6,6 +6,7 @@ const {
   createUser,
   deleteUser,
   updateUser,
+  loginUser
 } = require('../queries/user');
 
 // Index route
@@ -30,6 +31,18 @@ users.get('/:id', async (req, res) => {
     res.status(400).json({ error: ' User Not found' });
   }
 });
+
+users.post('/login', async(req,res)=>{
+// email and password is req.body
+  try {
+    const user = await loginUser(req.body);
+    res.status(200).json(user);
+  } catch (error) {
+    res.status(500).json({ error: 'error' });
+  }
+})
+
+
 //CREATE
 users.post('/', async (req, res) => {
   let copy = { ...req.body };
