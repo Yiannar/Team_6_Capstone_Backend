@@ -22,7 +22,17 @@ const getAllGroupsSingleUser = async (profile_id) => {
     return error;
   }
 };
-
+const getAllGroupsUserBulletin = async (profile_id) => {
+  try {
+    const groups = await db.any(
+      'SELECT * FROM user_groups WHERE profile_id = $1',
+      profile_id
+    );
+    return groups;
+  } catch (error) {
+    return error;
+  }
+};
 
 const getAllGroups = async (groups_id) => {
   try {
@@ -68,9 +78,6 @@ const getSingleUserGroup = async (profile_id, groups_id) => {
 
 
 
-
-
-
 const joinAGroup = async (profile_id, groups_id) => {
   try {
     const groupJoined = await db.one(
@@ -99,6 +106,7 @@ const leaveAGroup = async (profile_id, groups_id) => {
 module.exports = {
   getAllUserGroups,
   getAllGroupsSingleUser,
+  getAllGroupsUserBulletin,
   getAllGroups,
   countGroupMembers,
   getSingleUserGroup,
