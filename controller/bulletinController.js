@@ -10,9 +10,9 @@ const {
 
 
 bulletin.get('/', async (req, res) => {
-  const AllBulletin = await getAllBulletin();
-  if (AllBulletin[0]) {
-    res.status(200).json(AllBulletin);
+  const allBulletins = await getAllBulletin();
+  if (allBulletins[0]) {
+    res.status(200).json(allBulletins);
   } else {
     res.status(500).json({ error: 'Unable to get all bulletin posts' });
   }
@@ -30,16 +30,22 @@ bulletin.get('/:id', async (req, res) => { const { id } = req.params;
     res.status(400).json({ error: 'Bulletin Not found' });
   }
 });     
-// bulletin.get('/:id', async (req, res) => {
-//   const { id } = req.params;
-//   const bulletin = await getBulletin(id);
-//   console.log('bulletin', bulletin);
-//   if (!bulletin.message) {
-//     res.status(200).json(bulletin);
-//   } else {
-//     res.status(400).json({ error: ' Bulletin Not found' });
+
+// bulletin.get('/profile/:profile_id', async (req, res) => {
+//   const { profile_id } = req.params;
+//   try {
+//     const groups = await getAllGroupsUserBelongsTo(profile_id);
+//     const groupIds = groups.map((group) => group.groups_id);
+
+//     const bulletins = await getAllBulletin(groupIds);
+//     res.status(200).json(bulletins);
+//   } catch (error) {
+//     res.status(500).json({ error: 'Unable to get bulletins for the profile' });
 //   }
 // });
+
+
+// 
 
 // create
 bulletin.post('/', async (req, res) => {
