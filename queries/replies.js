@@ -1,14 +1,21 @@
 const db = require('../db/dbConfig');
 
-const getAllReplies = async () => {
+const getAllReplies = async (post_id = null) => {
   try {
-    const allReplies = await db.any('SELECT * FROM replies');
+    let query = 'SELECT * FROM replies';
+    let params = [];
+
+    if (post_id) {
+      query += ' WHERE post_id = $1';
+      params.push(post_id);
+    }
+
+    const allReplies = await db.any(query, params);
     return allReplies;
   } catch (error) {
     return error;
   }
 };
-
 const getReply = async (post_id) => {
   try {
 
@@ -20,18 +27,19 @@ const getReply = async (post_id) => {
   }
 };
 
-const createReplies = async (replies) =>{
-    let {reply,date, post_id, author_id} = replies
-    try{
-        const newReplies = await db.one(
-            'INSERT INTO replies(reply,date, post_id, author_id) VALUES ($1, $2, $3, $4) RETURNING *',
-            [reply, date, post_id, author_id]
-        ) 
-        return newReplies
-    } catch(error){
-        return error
-    }
+const createReplies = async (replies) => {
+  let { reply, date, post_id, author_id, groups_id } = replies;
+  try {
+    const newReplies = await db.one(
+      'INSERT INTO replies(reply, date, post_id, author_id, groups_id) VALUES ($1, $2, $3, $4, $5) RETURNING *',
+      [reply, date, post_id, author_id, groups_id]
+    );
+    return newReplies;
+  } catch (error) {
+    return error;
+  }
 };
+
 
 const deleteReply = async (id) => {
   try {

@@ -58,17 +58,19 @@ INSERT INTO replies(reply, date, post_id, author_id, groups_id) VALUES
 ('Jane, I can relate to the struggle of marathon training. It is tough, but the sense of accomplishment is worth it. Lets keep pushing and inspiring each other!','2023-05-25', 6,6,6),
 ('You are absolutely right, Ryan! I have been neglecting mobility. Lets share some tips on improving flexibility and staying injury-free.',' 2023-05-22', 8,8,8);
 
-INSERT INTO bulletin(title, message, author, date , author_id,groups, groups_id) VALUES
-('Early Moring Running', 'Hey everyone lets meet at 5am today!','Jane Doe', '2023-05-22', 1, 'Early Morning Run', 1),
-('Brooklyn Joggers', 'Brooklyn Group Meetings ', 'John Doe','2023-05-22', 2, 'First run at Brooklyn Bridge Park', 2),
-('Bronx Running Club', 'Running through out the Bronx ','Kelly Livingston' ,'2023-05-23', 3, 'Running for all levels', 3),
-('Joggers Circle', 'Jogging for you', 'Jane Smith','2023-05-23', 4, 'find a buddy and start jogging', 4),
-('Running Club', 'Jogging for you', 'Michael Johnson','2023-05-23', 5, 'find a buddy and start jogging', 5),
-('Marathon Training Group', 'Jogging for you', 'Emily Brown','2023-05-23', 6, 'find a buddy and start jogging', 6),
-('Trail Running Enthusiasts', 'Jogging for you', 'David Taylor','2023-05-23', 7, 'find a buddy and start jogging', 7),
-('Beginners Running Group', 'Jogging for you', 'Ryan Davis','2023-05-24', 8, 'find a buddy and start jogging', 8),
-('High Vibrational Running Group', 'Running for your virbration ', 'Ryan Davis','2023-05-24', 8, 'Running to help improve your aura and mental health', 9),
-('Social Running Crew', 'Pick a topic and start running', 'David Taylor', '2023-05-24', 7, 'find a buddy and talk about your favorite topic', 10);
+INSERT INTO bulletin(title, message, author, date , author_id,groups, groups_id, is_important) VALUES
+('Meet up time', 'Hey everyone lets meet at 5am today!','Jane Doe', '2023-05-22', 2, 'Early Morning Run', 1, true),
+('Hot Weather', 'Hey dont forget to stay hydrated today its going to be 90 degrees!','John Doe', '2023-05-22', 2, 'Early Morning Run', 1, true),
+('First run at Brooklyn Bridge Park', 'Tomorrow we are meeting by the BK bridge ', 'John Doe','2023-05-22', 2, 'Brooklyn Joggers', 2, true),
+('Running for all levels', 'Running through out the Bronx ','Kelly Livingston' ,'2023-05-23', 3, 'Bronx Running Club', 3,false),
+( 'Foot Pals','Find a buddy to start jogging with give me a W on the comments', 'Jane Smith','2023-05-23', 4, 'Joggers Circle', 4, false),
+( 'Jogging is life','Lets get motivated, we will meet tomorrow at 7am', 'Michael Johnson','2023-05-23', 5, 'Running Club', 5, false),
+( 'Marathon Training Soon','As many of you may know there is Kyrun Marathon coming up in 3 months, I will let you know what the schedule will be like as we get start to ready', 'Emily Brown','2023-05-23', 6, 'Marathon Training Group', 6, true),
+( 'Bear Mountain','In exactly two week we will be jogging at Bear Mountain. We will meet in Grand Central, NYC at 8am', 'David Taylor','2023-05-23', 7, 'Trail Running Enthusiasts', 7, false),
+('Come one, Come all','Our entry level jog starts this saturday for all experience levels', 'Ryan Davis','2023-05-24', 8, 'Beginners Running Group', 8, true),
+('Running to help improve your aura and mental health', 'In 2 hours we will be stretching near the entrance 72nd st, Central Park West. Come catch a vibe with us!', 'Ryan Davis','2023-05-24', 8,'High Vibrational Running Group',9, false),
+( 'find a buddy and talk about your favorite topic','Pick a topic and start running', 'David Taylor', '2023-05-24', 7,'Social Running Crew',  10, false);
+
 
 INSERT INTO running_routes (title, description, distance,location) VALUES
 ('Central Park Loop', 'Enjoy a scenic run through Central Park.', 3.5, 'Manhattan'),
