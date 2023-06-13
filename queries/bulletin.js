@@ -43,7 +43,7 @@ const createBulletin = async (bulletin) => {
   let { title, message, author, date, author_id, groups, groups_id, is_important } = bulletin;
   try {
     const newBulletin = await db.one(
-      'INSERT INTO bulletin (title, message, author, date, author_id, groups, groups_id, is_important) VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *',
+      'INSERT INTO bulletin (title, message, author, date, author_id, groups, groups_id, is_important) VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING *',
       [ title, message, author, date, author_id, groups, groups_id, is_important]
     );
     return newBulletin;
