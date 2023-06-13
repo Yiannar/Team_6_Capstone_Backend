@@ -22,8 +22,8 @@ const createGroup= async (groups) =>{
     let {title, about, img, location} = groups
     try{
         const newGroup = await db.one(
-            'INSERT INTO groups(title, about, img, location) VALUES ($1, $2, $3, $4) RETURNING *',
-            [title, about, img, location]
+            'INSERT INTO groups(title, about, img, location) VALUES ($1, $2, $3, $4, $5) RETURNING *',
+            [title, about, img, location, author_id]
         ) 
         return newGroup
     } catch(error){
@@ -47,8 +47,8 @@ const updateGroup = async (id, groups) =>{
   let {title, about, img, location} = groups
     try {
         const updatedGroup = await db.one(
-            'UPDATE groups SET title=$1, about=$2, img=$3, location=$4 WHERE id=$5 RETURNING *',
-            [title, about, img, location, id ]
+            'UPDATE groups SET title=$1, about=$2, img=$3, location=$4, author_id=$5 WHERE id=$6 RETURNING *',
+            [title, about, img, location,author_id, id ]
         )
         return updatedGroup
     } catch (error) {

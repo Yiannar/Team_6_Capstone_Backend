@@ -28,7 +28,8 @@ CREATE TABLE groups (
    title TEXT NOT NULL,
    about TEXT,
    img TEXT NOT NULL,
-   location TEXT
+   location TEXT,
+   author_id INTEGER REFERENCES profile (id)
 );
 
 DROP TABLE IF EXISTS profile_groups;

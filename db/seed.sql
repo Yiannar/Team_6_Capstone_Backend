@@ -11,17 +11,17 @@ INSERT INTO profile (first_name,last_name, email, password, age, zipCode, pace, 
 ('Ryan','Davis', 'ryandavis@example.com', 'password6', 21, 10021, '5','male', true, 'https://img.freepik.com/premium-photo/profile-picture-well-built-athletic-female-runner-sportswear-training-isolated-along-gray-wall_171337-28948.jpg?w=2000', 'I love fitness and meeting new people I am inspiring to be a fitness trainer');
 
 
-INSERT INTO groups (title, about, img, location) VALUES
-('Early Morning Run','For the early birds lets meet up at 5am!','https://t3.ftcdn.net/jpg/03/52/54/64/240_F_352546427_SlRYT8y5pnn1NM2ilDM4heFA3oNnIwya.jpg','Queens'),
-('Brooklyn Joggers','For the Brooklynites that want to run around the borough','https://images.pexels.com/photos/944690/pexels-photo-944690.jpeg?cs=srgb&dl=pexels-chris-molloy-944690.jpg&fm=jpg', 'Brooklyn'),
-('Bronx Running Club', 'A group dedicated to running enthusiasts. Join us for regular group runs and participate in local races.','https://hips.hearstapps.com/hmg-prod/images/group-of-runners-in-a-cross-country-race-royalty-free-image-1653336803.jpg?crop=0.668xw:1.00xh;0.333xw,0&resize=1200:*','Bronx'),
-('Joggers Circle', 'Experience the benefits of Jogging in a supportive and welcoming environment. All levels are welcome.','https://www.verywellfit.com/thmb/obmAncvCUM__VVgHd3Q5ljf5rq4=/750x0/filters:no_upscale():max_bytes(150000):strip_icc()/multi-ethnic-joggers-running-944241968-5ad0b4243128340036e0e366.jpg','Manhattan'),
-('Running Club', 'Join our running club and improve your fitness while enjoying the company of fellow runners!', 'https://mapmy.uastatic.com/75cda26295055317ff43b75a70675185.png', 'Staten Island'),
-('Marathon Training Group', 'Get ready for your next marathon with our dedicated training group. Train together, achieve together!', 'https://static01.nyt.com/images/2017/10/17/science/11physed-marathon-photo/11physed-marathon-photo-superJumbo.jpg', 'Brooklyn'),
-('Trail Running Enthusiasts', 'Explore natures beauty and challenge yourself with our trail running group. Discover new trails and make lasting memories!', 'https://cdn.5280.com/2021/08/Enchanted_Forest_Sarah_Banks.jpg', 'Queens'),
-('Beginners Running Group', 'Are you new to running? Join our beginners group and lets start your running journey together!', 'https://res.cloudinary.com/im2015/image/upload/w_1200,h_1200,c_fill,g_center//blog/running_cover_1.jpg','Bronx'),
-(' High Vibrational Running Group', 'Are you looking for a peaceful run? Join our beginners group and lets start your running journey together!', 'https://res.cloudinary.com/im2015/image/upload/w_1200,h_1200,c_fill,g_center//blog/running_cover_1.jpg','Staten Island'),
-('Social Running Crew', 'Join our fun and social running crew. We focus on enjoying the run and building friendships!', 'https://media.istockphoto.com/id/1153408424/photo/mature-and-senior-people-jogging-at-park.jpg?s=612x612&w=0&k=20&c=LDctDu331B5cyIG8yomVMPuafmo6Uv-3GHP8WHUAJAI=', 'Manhattan');
+INSERT INTO groups (title, about, img, location, author_id) VALUES
+('Early Morning Run','For the early birds lets meet up at 5am!','https://t3.ftcdn.net/jpg/03/52/54/64/240_F_352546427_SlRYT8y5pnn1NM2ilDM4heFA3oNnIwya.jpg','Queens',1),
+('Brooklyn Joggers','For the Brooklynites that want to run around the borough','https://images.pexels.com/photos/944690/pexels-photo-944690.jpeg?cs=srgb&dl=pexels-chris-molloy-944690.jpg&fm=jpg', 'Brooklyn',2),
+('Bronx Running Club', 'A group dedicated to running enthusiasts. Join us for regular group runs and participate in local races.','https://hips.hearstapps.com/hmg-prod/images/group-of-runners-in-a-cross-country-race-royalty-free-image-1653336803.jpg?crop=0.668xw:1.00xh;0.333xw,0&resize=1200:*','Bronx', 3),
+('Joggers Circle', 'Experience the benefits of Jogging in a supportive and welcoming environment. All levels are welcome.','https://www.verywellfit.com/thmb/obmAncvCUM__VVgHd3Q5ljf5rq4=/750x0/filters:no_upscale():max_bytes(150000):strip_icc()/multi-ethnic-joggers-running-944241968-5ad0b4243128340036e0e366.jpg','Manhattan',4),
+('Running Club', 'Join our running club and improve your fitness while enjoying the company of fellow runners!', 'https://mapmy.uastatic.com/75cda26295055317ff43b75a70675185.png', 'Staten Island',5),
+('Marathon Training Group', 'Get ready for your next marathon with our dedicated training group. Train together, achieve together!', 'https://static01.nyt.com/images/2017/10/17/science/11physed-marathon-photo/11physed-marathon-photo-superJumbo.jpg', 'Brooklyn',6),
+('Trail Running Enthusiasts', 'Explore natures beauty and challenge yourself with our trail running group. Discover new trails and make lasting memories!', 'https://cdn.5280.com/2021/08/Enchanted_Forest_Sarah_Banks.jpg', 'Queens',7),
+('Beginners Running Group', 'Are you new to running? Join our beginners group and lets start your running journey together!', 'https://res.cloudinary.com/im2015/image/upload/w_1200,h_1200,c_fill,g_center//blog/running_cover_1.jpg','Bronx',8),
+(' High Vibrational Running Group', 'Are you looking for a peaceful run? Join our beginners group and lets start your running journey together!', 'https://res.cloudinary.com/im2015/image/upload/w_1200,h_1200,c_fill,g_center//blog/running_cover_1.jpg','Staten Island',2),
+('Social Running Crew', 'Join our fun and social running crew. We focus on enjoying the run and building friendships!', 'https://media.istockphoto.com/id/1153408424/photo/mature-and-senior-people-jogging-at-park.jpg?s=612x612&w=0&k=20&c=LDctDu331B5cyIG8yomVMPuafmo6Uv-3GHP8WHUAJAI=', 'Manhattan',1);
 
 
 
