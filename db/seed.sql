@@ -11,17 +11,18 @@ INSERT INTO profile (first_name,last_name, email, password, age, zipCode, pace, 
 ('Ryan','Davis', 'ryandavis@example.com', 'password6', 21, 10021, '5','male', true, 'https://img.freepik.com/premium-photo/profile-picture-well-built-athletic-female-runner-sportswear-training-isolated-along-gray-wall_171337-28948.jpg?w=2000', 'I love fitness and meeting new people, I am inspiring to be a fitness trainer');
 
 
-INSERT INTO groups (title, about, img, location) VALUES
-('Early Morning Run','This group is for beginner users','https://t3.ftcdn.net/jpg/03/52/54/64/240_F_352546427_SlRYT8y5pnn1NM2ilDM4heFA3oNnIwya.jpg','Queens'),
-('Brooklyn Joggers','This group is for intermediate users ','https://images.pexels.com/photos/944690/pexels-photo-944690.jpeg?cs=srgb&dl=pexels-chris-molloy-944690.jpg&fm=jpg', 'Brooklyn'),
-('Bronx Running Club', 'This group is for advance users','https://hips.hearstapps.com/hmg-prod/images/group-of-runners-in-a-cross-country-race-royalty-free-image-1653336803.jpg?crop=0.668xw:1.00xh;0.333xw,0&resize=1200:*','Bronx'),
-('Joggers Circle', 'This group is for all users beginner friendly','https://www.verywellfit.com/thmb/obmAncvCUM__VVgHd3Q5ljf5rq4=/750x0/filters:no_upscale():max_bytes(150000):strip_icc()/multi-ethnic-joggers-running-944241968-5ad0b4243128340036e0e366.jpg','Manhattan'),
-('Running Club', 'This group is for intermediate users ', 'https://mapmy.uastatic.com/75cda26295055317ff43b75a70675185.png', 'Staten Island'),
-('Marathon Training Group', 'This group is for advance users', 'https://static01.nyt.com/images/2017/10/17/science/11physed-marathon-photo/11physed-marathon-photo-superJumbo.jpg', 'Brooklyn'),
-('Trail Running Enthusiasts', 'This group is for beginner users ', 'https://cdn.5280.com/2021/08/Enchanted_Forest_Sarah_Banks.jpg', 'Queens'),
-('Beginners Running Group', 'This group is for beginner users ', 'https://res.cloudinary.com/im2015/image/upload/w_1200,h_1200,c_fill,g_center//blog/running_cover_1.jpg','Bronx'),
-('High Vibrational Running Group', 'This group is for intermediate users', 'https://res.cloudinary.com/im2015/image/upload/w_1200,h_1200,c_fill,g_center//blog/running_cover_1.jpg','Staten Island'),
-('Social Running Crew', 'This group is for advance users ', 'https://media.istockphoto.com/id/1153408424/photo/mature-and-senior-people-jogging-at-park.jpg?s=612x612&w=0&k=20&c=LDctDu331B5cyIG8yomVMPuafmo6Uv-3GHP8WHUAJAI=', 'Manhattan');
+INSERT INTO groups (title, about, img, location, author_id) VALUES
+('Early Morning Run','This group is for beginner users','https://t3.ftcdn.net/jpg/03/52/54/64/240_F_352546427_SlRYT8y5pnn1NM2ilDM4heFA3oNnIwya.jpg','Queens',1),
+('Brooklyn Joggers','This group is for intermediate users ','https://images.pexels.com/photos/944690/pexels-photo-944690.jpeg?cs=srgb&dl=pexels-chris-molloy-944690.jpg&fm=jpg', 'Brooklyn',2),
+('Bronx Running Club', 'This group is for advance users','https://hips.hearstapps.com/hmg-prod/images/group-of-runners-in-a-cross-country-race-royalty-free-image-1653336803.jpg?crop=0.668xw:1.00xh;0.333xw,0&resize=1200:*','Bronx',3),
+('Joggers Circle', 'This group is for all users beginner friendly','https://www.verywellfit.com/thmb/obmAncvCUM__VVgHd3Q5ljf5rq4=/750x0/filters:no_upscale():max_bytes(150000):strip_icc()/multi-ethnic-joggers-running-944241968-5ad0b4243128340036e0e366.jpg','Manhattan',4),
+('Running Club', 'This group is for intermediate users ', 'https://mapmy.uastatic.com/75cda26295055317ff43b75a70675185.png', 'Staten Island',5),
+('Marathon Training Group', 'This group is for advance users', 'https://static01.nyt.com/images/2017/10/17/science/11physed-marathon-photo/11physed-marathon-photo-superJumbo.jpg', 'Brooklyn',6),
+('Trail Running Enthusiasts', 'This group is for beginner users ', 'https://cdn.5280.com/2021/08/Enchanted_Forest_Sarah_Banks.jpg', 'Queens',7),
+('Beginners Running Group', 'This group is for beginner users ', 'https://res.cloudinary.com/im2015/image/upload/w_1200,h_1200,c_fill,g_center//blog/running_cover_1.jpg','Bronx',8),
+('High Vibrational Running Group', 'This group is for intermediate users', 'https://res.cloudinary.com/im2015/image/upload/w_1200,h_1200,c_fill,g_center//blog/running_cover_1.jpg','Staten Island',2),
+('Social Running Crew', 'This group is for advance users ', 'https://media.istockphoto.com/id/1153408424/photo/mature-and-senior-people-jogging-at-park.jpg?s=612x612&w=0&k=20&c=LDctDu331B5cyIG8yomVMPuafmo6Uv-3GHP8WHUAJAI=', 'Manhattan',1);
+
 
 
 
@@ -58,17 +59,20 @@ INSERT INTO replies(reply, date, post_id, author_id, groups_id) VALUES
 ('Jane, I can relate to the struggle of marathon training. It is tough, but the sense of accomplishment is worth it. Lets keep pushing and inspiring each other!','2023-05-25', 6,6,6),
 ('You are absolutely right, Ryan! I have been neglecting mobility. Lets share some tips on improving flexibility and staying injury-free.',' 2023-05-22', 8,8,8);
 
-INSERT INTO bulletin(title, message, author, date , author_id,groups, groups_id) VALUES
-('Early Moring Running', 'For the early birds lets meet up at 5am!','Jane Doe', '2023-05-22', 1, 'Early Morning Run', 1),
-('Brooklyn Joggers', 'For the Brooklynites that want to run mid day ', 'John Doe','2023-05-22', 2, 'First run at Brooklyn Bridge Park', 2),
-('Bronx Running Club', 'We are dedicated to running enthusiasts. Join us for regular group runs and participate in local races. ','Kelly Livingston' ,'2023-05-23', 3, 'Running for all levels', 3),
-('Joggers Circle', 'Experience the benefits of Jogging in a supportive and welcoming environment. All levels are welcome.', 'Jane Smith','2023-05-23', 4, 'find a buddy and start jogging', 4),
-('Running Club', 'We focus on your form and fitness goals', 'Michael Johnson','2023-05-23', 5, 'find a buddy and start jogging', 5),
-('Marathon Training Group', 'Get ready for your next marathon with our dedicated training group. Train together, achieve together!', 'Emily Brown','2023-05-23', 6, 'find a buddy and start jogging', 6),
-('Trail Running Enthusiasts', 'Explore natures beauty and challenge yourself with our trail running group. Discover new trails and make lasting memories!', 'David Taylor','2023-05-23', 7, 'find a buddy and start jogging', 7),
-('Beginners Running Group', 'Are you new to running? Join our beginners group and lets start your running journey together!', 'Ryan Davis','2023-05-24', 8, 'find a buddy and start jogging', 8),
-('High Vibrational Running Group', 'Are you looking for a peaceful run? Join our beginners group and lets start your running journey together!', 'Ryan Davis','2023-05-24', 8, 'Running to help improve your aura and mental health', 9),
-('Social Running Crew', 'Join our fun and social running crew. We focus on enjoying the run and building friendships!', 'David Taylor', '2023-05-24', 7, 'find a buddy and talk about your favorite topic', 10);
+
+INSERT INTO bulletin(title, message, author, date , author_id,groups, groups_id, is_important) VALUES
+('Meet up time', 'Hey everyone lets meet at 5am today!','Jane Doe', '2023-05-22', 2, 'Early Morning Run', 1, true),
+('Hot Weather', 'Hey dont forget to stay hydrated today its going to be 90 degrees!','John Doe', '2023-05-22', 2, 'Early Morning Run', 1, true),
+('First run at Brooklyn Bridge Park', 'Tomorrow we are meeting by the BK bridge ', 'John Doe','2023-05-22', 2, 'Brooklyn Joggers', 2, true),
+('Running for all levels', 'Running through out the Bronx ','Kelly Livingston' ,'2023-05-23', 3, 'Bronx Running Club', 3,false),
+( 'Foot Pals','Find a buddy to start jogging with give me a W on the comments', 'Jane Smith','2023-05-23', 4, 'Joggers Circle', 4, false),
+( 'Jogging is life','Lets get motivated, we will meet tomorrow at 7am', 'Michael Johnson','2023-05-23', 5, 'Running Club', 5, false),
+( 'Marathon Training Soon','As many of you may know there is Kyrun Marathon coming up in 3 months, I will let you know what the schedule will be like as we get start to ready', 'Emily Brown','2023-05-23', 6, 'Marathon Training Group', 6, true),
+( 'Bear Mountain','In exactly two week we will be jogging at Bear Mountain. We will meet in Grand Central, NYC at 8am', 'David Taylor','2023-05-23', 7, 'Trail Running Enthusiasts', 7, false),
+('Come one, Come all','Our entry level jog starts this saturday for all experience levels', 'Ryan Davis','2023-05-24', 8, 'Beginners Running Group', 8, true),
+('Running to help improve your aura and mental health', 'In 2 hours we will be stretching near the entrance 72nd st, Central Park West. Come catch a vibe with us!', 'Ryan Davis','2023-05-24', 8,'High Vibrational Running Group',9, false),
+( 'Find a buddy and talk about your favorite topic','Pick a topic and start running', 'David Taylor', '2023-05-24', 7,'Social Running Crew',  10, false);
+
 
 INSERT INTO running_routes (title, description, distance,location) VALUES
 ('Central Park Loop', 'Enjoy a scenic run through Central Park.', 3.5, 'Manhattan'),

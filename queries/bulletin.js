@@ -23,12 +23,28 @@ const getBulletin = async (group_id) => {
   }
 };
 
+const getBulletinsByGroupIds = async (groupIds) => {
+  try {
+    const bulletins = await db.any(
+      'SELECT * FROM bulletin WHERE groups_id IN ($1:csv)',
+      [groupIds]
+    );
+    return bulletins;
+  } catch (error) {
+    return error;
+  }
+};
+
+
+
+
+
 const createBulletin = async (bulletin) => {
-  let { title, message, author, date, author_id, groups, groups_id } = bulletin;
+  let { title, message, author, date, author_id, groups, groups_id, is_important } = bulletin;
   try {
     const newBulletin = await db.one(
-      'INSERT INTO bulletin (title, message, author, date, author_id, groups, groups_id) VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *',
-      [ title, message, author, date, author_id, groups, groups_id]
+      'INSERT INTO bulletin (title, message, author, date, author_id, groups, groups_id, is_important) VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING *',
+      [ title, message, author, date, author_id, groups, groups_id, is_important]
     );
     return newBulletin;
   } catch (error) {
@@ -48,11 +64,11 @@ const deleteBulletin = async (id) => {
 };
 
 const updateBulletin = async (id, bulletin) => {
-  let { title, message, author, date, author_id, groups, groups_id } = bulletin;
+  let { title, message, author, date, author_id, groups, groups_id, is_important } = bulletin;
   try {
     const updatedBulletin = await db.one(
-      'UPDATE bulletin SET title=$1,message=$2,author=$3,date=$4, author_id=$5, groups=$6, groups_id=$7 WHERE id=$8 RETURNING *',
-      [title, message, author, date, author_id, groups, groups_id, id]
+      'UPDATE bulletin SET title=$1,message=$2,author=$3,date=$4, author_id=$5, groups=$6, groups_id=$7, is_important=$8 WHERE id=$9 RETURNING *',
+      [title, message, author, date, author_id, groups, groups_id, is_important, id]
     );
     return updatedBulletin;
   } catch (error) {
@@ -63,6 +79,7 @@ const updateBulletin = async (id, bulletin) => {
 module.exports = {
   getAllBulletin,
   getBulletin,
+  getBulletinsByGroupIds,
   createBulletin,
   deleteBulletin,
   updateBulletin,

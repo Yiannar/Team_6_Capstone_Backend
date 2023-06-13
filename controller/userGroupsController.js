@@ -3,12 +3,18 @@ const usersGroups = express.Router();
 const {
   getAllUserGroups,
   getAllGroupsSingleUser,
+  getAllGroupsUserBulletin,
   getAllGroups,
   countGroupMembers,
   getSingleUserGroup,
   joinAGroup,
   leaveAGroup,
 } = require('../queries/user_groups');
+const {
+  getBulletinsByGroupIds
+} = require('../queries/bulletin')
+
+
 //  This gets all the groups the user belongs to
 usersGroups.get('/', async (req, res) => {
   const groups = await getAllUserGroups();
@@ -31,6 +37,9 @@ usersGroups.get('/:profile_id/', async (req, res) => {
     res.status(400).json({ error: 'group Not found' });
   }
 });
+
+
+
 // gets all profiles that belong to a groups_id
 usersGroups.get('/groups/:groups_id', async (req, res) => {
   const { groups_id } = req.params;
@@ -68,6 +77,8 @@ usersGroups.get('/:profile_id/:groups_id', async (req, res) => {
     res.status(500).json({ error: 'Internal server error' });
   }
 });
+
+
 // This works now to join
 usersGroups.post('/:profile_id/:groups_id', async (req, res) => {
   const { profile_id, groups_id } = req.params;

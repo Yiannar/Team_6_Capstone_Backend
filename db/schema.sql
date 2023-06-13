@@ -28,7 +28,8 @@ CREATE TABLE groups (
    title TEXT NOT NULL,
    about TEXT,
    img TEXT NOT NULL,
-   location TEXT
+   location TEXT,
+   author_id INTEGER REFERENCES profile (id)
 );
 
 DROP TABLE IF EXISTS profile_groups;
@@ -69,9 +70,10 @@ CREATE TABLE bulletin (
   message TEXT NOT NULL,
   author TEXT NOT NULL,
   date TEXT NOT NULL,
-  author_id  INTEGER REFERENCES profile (id),
+  author_id INTEGER REFERENCES profile (id),
   groups TEXT NOT NULL,
-  groups_id INTEGER REFERENCES groups(id)
+  groups_id INTEGER REFERENCES groups(id),
+  is_important BOOLEAN DEFAULT FALSE
 );
 
 DROP TABLE IF EXISTS running_routes;
