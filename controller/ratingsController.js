@@ -6,7 +6,7 @@ const {
   createRating,
   deleteRating,
   updateRating,
-} = require('../queries/rating');
+} = require('../queries/ratings');
 
 ratings.get('/', async (req, res) => {
   const allRatings = await getAllRatings();
