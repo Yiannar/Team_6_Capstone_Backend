@@ -19,10 +19,10 @@ const getGroup = async (id) => {
 };
 
 const createGroup= async (groups) =>{
-    let {title, about, img, location} = groups
+    let {title, about, img, location, author_id} = groups
     try{
         const newGroup = await db.one(
-            'INSERT INTO groups(title, about, img, location) VALUES ($1, $2, $3, $4, $5) RETURNING *',
+            'INSERT INTO groups(title, about, img, location, author_id) VALUES ($1, $2, $3, $4, $5) RETURNING *',
             [title, about, img, location, author_id]
         ) 
         return newGroup
