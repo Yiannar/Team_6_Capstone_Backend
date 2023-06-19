@@ -74,16 +74,17 @@ INSERT INTO bulletin(title, message, author, date , author_id,groups, groups_id,
 ( 'Find a buddy and talk about your favorite topic','Pick a topic and start running', 'David Taylor', '2023-05-24', 7,'Social Running Crew',  10, false);
 
 
-INSERT INTO running_routes (title, description, distance,location) VALUES
-('Central Park Loop', 'Enjoy a scenic run through Central Park.', 3.5, 'Manhattan'),
-('Prospect Park Loop', 'Run amidst the beauty of Prospect Park.', 2.8, 'Brooklyn'),
-('Flushing Meadows Corona Park', 'Explore Flushing Meadows Corona Park while getting your run in.', 4.2, 'Queens'),
-('Van Cortlandt Park', 'Experience nature in Van Cortlandt Park.', 5.0,  'Bronx'),
-('South Beach Boardwalk', 'Enjoy a run along the beautiful South Beach Boardwalk.', 2.5,'StatenIsland'),
-('Pelham Bay Park', 'Pelham Bay Park is the largest park in New York City, located in the Bronx. It offers an extensive trail system with diverse terrain, including woodlands, salt marshes, and waterfront views. With its vast size, runners can explore various routes and enjoy a tranquil escape from the city.', 13.6, 'Bronx, NY'),
-('Forest Park', 'Forest Park is a scenic park located in Queens, spanning over 500 acres. It features winding trails, peaceful forests, and beautiful natural landscapes. Runners can choose from a range of paths, including the popular 2.5-mile Forest Park Carousel Loop, for an enjoyable running experience.', 2.5, 'Queens, NY'),
-('Riverside Park', 'Riverside Park is a scenic waterfront park located on the Upper West Side of Manhattan. It offers a picturesque running path along the Hudson River, with beautiful views of the water and the Manhattan skyline. Runners can enjoy a peaceful and rejuvenating experience while covering a distance of 4 miles.', 4.0, 'Manhattan, NY'),
-('Cunningham Park', 'Cunningham Park is a diverse park located in Queens, offering a variety of recreational activities. Runners can explore its extensive trail network, which winds through forests and open fields. The park also features a dedicated cross-country trail, making it a favorite spot for running enthusiasts.', 5.2, 'Queens, NY');
+INSERT INTO running_routes (title, description, distance, location, image) VALUES
+('Central Park Loop', 'Enjoy a scenic run through Central Park.', 3.5, 'Manhattan', 'image_url1'),
+('Prospect Park Loop', 'Run amidst the beauty of Prospect Park.', 2.8, 'Brooklyn', 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.alltrails.com%2Ftrail%2Fus%2Fnew-york%2Fprospect-park-loop&psig=AOvVaw3sotNh7cKXB48xcw8Oyld1&ust=1686766648388000&source=images&cd=vfe&ved=0CBAQjRxqFwoTCOj4kdXtwP8CFQAAAAAdAAAAABAI
+'),
+('Flushing Meadows Corona Park', 'Explore Flushing Meadows Corona Park while getting your run in.', 4.2, 'Queens', 'image_url3'),
+('Van Cortlandt Park', 'Experience nature in Van Cortlandt Park.', 5.0,  'Bronx', 'image_url4'),
+('South Beach Boardwalk', 'Enjoy a run along the beautiful South Beach Boardwalk.', 2.5, 'StatenIsland', 'image_url5'),
+('Pelham Bay Park', 'Pelham Bay Park is the largest park in New York City, located in the Bronx. It offers an extensive trail system with diverse terrain, including woodlands, salt marshes, and waterfront views. With its vast size, runners can explore various routes and enjoy a tranquil escape from the city.', 13.6, 'Bronx, NY', 'image_url6'),
+('Forest Park', 'Forest Park is a scenic park located in Queens, spanning over 500 acres. It features winding trails, peaceful forests, and beautiful natural landscapes. Runners can choose from a range of paths, including the popular 2.5-mile Forest Park Carousel Loop, for an enjoyable running experience.', 2.5, 'Queens, NY', 'image_url7'),
+('Riverside Park', 'Riverside Park is a scenic waterfront park located on the Upper West Side of Manhattan. It offers a picturesque running path along the Hudson River, with beautiful views of the water and the Manhattan skyline. Runners can enjoy a peaceful and rejuvenating experience while covering a distance of 4 miles.', 4.0, 'Manhattan, NY', 'image_url8'),
+('Cunningham Park', 'Cunningham Park is a diverse park located in Queens, offering a variety of recreational activities. Runners can explore its extensive trail network, which winds through forests and open fields. The park also features a dedicated cross-country trail, making it a favorite spot for running enthusiasts.', 5.2, 'Queens, NY', 'image_url9');
 
 
 INSERT INTO ratings (rating_id, route_name, profile_id, rating_value, location)
@@ -95,5 +96,6 @@ VALUES
   (5, 'Route E', 5, 4.1, 'South Beach Boardwalk'),
   (6, 'Route F', 6, 3.8, 'Forest Park'),
   (7, 'Route G', 7, 4.2, 'Riverside Park'),
-  (8, 'Route H', 8, 4.6, 'Cunningham Park');
+  (8, 'Route H', 8, 4.6, 'Cunningham Park')
+
 

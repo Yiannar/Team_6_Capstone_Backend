@@ -82,7 +82,8 @@ CREATE TABLE running_routes (
     title TEXT NOT NULL, 
     description TEXT NOT NULL,
     distance DECIMAL (10,2),
-    location VARCHAR (250)
+    location VARCHAR (250),
+    image TEXT  
 );
 
 CREATE TABLE ratings(
